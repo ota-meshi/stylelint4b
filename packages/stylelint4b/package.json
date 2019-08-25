@@ -1,0 +1,49 @@
+{
+  "name": "stylelint4b",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "unpkg": "dist/stylelint4b.js",
+  "files": [
+    "dist",
+    "lib",
+    "postcss-syntax"
+  ],
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "karma start karma.conf.js --log-level debug --single-run --browsers ChromeForCI",
+    "test:chrome": "karma start karma.conf.js --log-level debug --browsers Chrome",
+    "build": "cross-env NODE_ENV=production node ./build",
+    "build:dev": "cross-env NODE_ENV=development node ./build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/stylelint4b.git"
+  },
+  "author": "Yosuke Ota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/stylelint4b/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/stylelint4b#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^1.3.0",
+    "karma-spec-reporter": "0.0.32",
+    "karma-webpack": "^4.0.2",
+    "mocha": "^6.2.2",
+    "raw-loader": "^4.0.0",
+    "string-replace-loader": "^2.2.0",
+    "stylelint": "^13.3.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "webpack": "^4.41.2",
+    "webpack-merge": "^4.2.2"
+  }
+}
