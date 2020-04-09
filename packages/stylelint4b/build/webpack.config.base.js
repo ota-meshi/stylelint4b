@@ -25,6 +25,19 @@ module.exports = {
             // ./node_modules/postcss-syntax/...
             // Critical dependency: the request of a dependency is an expression
             {
+                test: /node_modules\/stylelint\/lib\/(getPostcssResult)\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "require\\(([^\"'].*?)\\)|require\\((.*?[^\"'])\\)",
+                    replace: (_, params1, params2) =>
+                        `require('require-shim')(${params1 || params2})`,
+                    flags: "g",
+                },
+            },
+            // resolve
+            // ./node_modules/postcss-syntax/...
+            // Critical dependency: the request of a dependency is an expression
+            {
                 test: /node_modules\/postcss-syntax\/(patch-postcss|load-syntax|get-syntax|processor)\.js$/u,
                 loader: "string-replace-loader",
                 options: {

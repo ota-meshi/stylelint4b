@@ -9,8 +9,8 @@ function resolve(seg) {
 
 module.exports = {
     base: "/",
-    title: "postcss-styl-test",
-    description: "postcss-styl-test",
+    title: "stylelint-plugin-stylus-test",
+    description: "stylelint-plugin-stylus-test",
     serviceWorker: true,
     head: [
         // ["link", { rel: "icon", type: "image/png", href: "/logo.png" }]

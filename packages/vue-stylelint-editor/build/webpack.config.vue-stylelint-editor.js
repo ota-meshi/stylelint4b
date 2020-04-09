@@ -46,6 +46,10 @@ module.exports = {
                     "postcss-loader",
                 ],
             },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/u,
+                use: "url-loader?limit=100000",
+            },
         ],
     },
     // optimization: {

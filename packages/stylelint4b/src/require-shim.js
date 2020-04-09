@@ -8,8 +8,8 @@ const MODULES = {
     "postcss-less": require("postcss-less"),
     "postcss-sass": require("postcss-sass"),
     "postcss-html": require("postcss-html"),
-    "postcss-jsx": require("postcss-jsx"),
-    "postcss-markdown": require("postcss-markdown"),
+    "@stylelint/postcss-css-in-js": require("@stylelint/postcss-css-in-js"),
+    "@stylelint/postcss-markdown": require("@stylelint/postcss-markdown"),
     /* eslint-enable @mysticatea/node/no-extraneous-require */
 }
 
