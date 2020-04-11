@@ -71,3 +71,4 @@ export default {
 
 [eslint4b]: https://www.npmjs.com/package/eslint4b
 [stylelint]: https://stylelint.io/
+[Vue.js]: https://vuejs.org/
