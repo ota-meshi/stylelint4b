@@ -14,7 +14,7 @@
   "scripts": {
     "test": "exit 0",
     "test:chrome": "exit 0",
-    "build": "cross-env NODE_ENV=production node ./build",
+    "build": "cross-env NODE_ENV=production node --max-old-space-size=2048 ./build",
     "build:dev": "cross-env NODE_ENV=development node ./build"
   },
   "repository": {
@@ -42,5 +42,8 @@
   },
   "dependencies": {
     "vue-eslint-editor": "^1.0.0"
+  },
+  "publishConfig": {
+    "tag": "alpha"
   }
 }

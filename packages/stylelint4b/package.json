@@ -1,13 +1,15 @@
 {
   "name": "stylelint4b",
-  "version": "13.3.1-alpha.0",
+  "version": "13.3.1-alpha.1",
   "description": "",
   "main": "index.js",
   "unpkg": "dist/stylelint4b.js",
   "files": [
     "dist",
     "lib",
-    "postcss-syntax"
+    "packages",
+    "index.js",
+    "alias.js"
   ],
   "engines": {
     "node": ">=12"

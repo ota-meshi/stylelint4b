@@ -13,7 +13,7 @@ console.log(`NODE_ENV=${process.env.NODE_ENV}`)
  * @type {webpack.Configuration}
  */
 module.exports = {
-    devtool: "eval-source-map",
+    // devtool: "eval-source-map",
     mode: process.env.NODE_ENV || "production",
     /* eslint-enable no-process-env */
     entry: {
