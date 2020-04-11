@@ -15,7 +15,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "test": "karma start karma.conf.js --log-level debug --single-run --browsers ChromeForCI",
+    "test": "node --max_old_space_size=4096 ./node_modules/karma/bin/karma start karma.conf.js --log-level debug --single-run --browsers ChromeForCI",
     "test:chrome": "karma start karma.conf.js --log-level debug --browsers Chrome",
     "build": "cross-env NODE_ENV=production node ./build",
     "build:dev": "cross-env NODE_ENV=development node ./build"

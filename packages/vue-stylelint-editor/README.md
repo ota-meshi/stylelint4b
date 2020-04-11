@@ -2,7 +2,7 @@
 
 This package provides [Vue.js] component of a code editor for [stylelint] playgrounds.
 
-This idea and implementation is based on [eslint4b].
+This idea and implementation is based on [eslint4b] and [vue-eslint-editor].
 
 ## Installation
 
@@ -70,5 +70,6 @@ export default {
 
 
 [eslint4b]: https://www.npmjs.com/package/eslint4b
+[vue-eslint-editor]: https://www.npmjs.com/package/vue-eslint-editor
 [stylelint]: https://stylelint.io/
 [Vue.js]: https://vuejs.org/
