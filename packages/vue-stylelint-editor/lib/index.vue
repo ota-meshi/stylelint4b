@@ -144,7 +144,7 @@ export default {
             type: Object,
             default() {
                 return {
-                    extends: "stylelint-config-standard",
+                    extends: ["stylelint-config-standard"],
                     rules: {},
                 }
             },

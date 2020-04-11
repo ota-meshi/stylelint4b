@@ -2,6 +2,8 @@
 
 [stylelint] which works in browsers.
 
+This idea and implementation is based on [eslint4b].
+
 ## Installation
 
 ```bash
@@ -34,3 +36,4 @@ const output = resultObject.output
 ```
 
 [stylelint]: https://stylelint.io/
+[eslint4b]: https://www.npmjs.com/package/eslint4b
