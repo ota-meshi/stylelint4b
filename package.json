@@ -9,7 +9,6 @@
   "scripts": {
     "test": "cd ./packages/stylelint4b && npm run test && cd ../vue-stylelint-editor && npm run test && cd ../../",
     "test:chrome": "cd ./packages/stylelint4b && npm run test:chrome && cd ../vue-stylelint-editor && npm run test:chrome && cd ../../",
-    "prelint": "npm run build",
     "lint": "eslint . --ext .js,.vue",
     "lint:fix": "eslint . --ext .js,.vue --fix",
     "build": "cd ./packages/stylelint4b && npm run build && cd ../vue-stylelint-editor && npm run build && cd ../../",

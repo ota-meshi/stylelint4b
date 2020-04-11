@@ -12,7 +12,6 @@
     "node": ">=12"
   },
   "scripts": {
-    "pretest": "npm run lint",
     "test": "exit 0",
     "test:chrome": "exit 0",
     "build": "cross-env NODE_ENV=production node ./build",

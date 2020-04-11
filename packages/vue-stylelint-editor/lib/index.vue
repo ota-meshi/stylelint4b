@@ -301,7 +301,7 @@ export default {
         ;(async () => {
             // Load the monaco editor lazily.
             const { monaco, loadLanguage } = await import(
-                "vue-eslint-editor/dist/monaco.js"
+                "vue-eslint-editor/dist/monaco"
             )
             // Load the language editor of the current language.
             await loadLanguage(this.language)
