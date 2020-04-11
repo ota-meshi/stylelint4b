@@ -5,7 +5,7 @@ on:
       - "*"
 jobs:
   release-stylelint4b:
-    name: check version, and release
+    name: check version, and release for stylelint4b
     runs-on: ubuntu-latest
     steps:
     - name: checkout
@@ -26,7 +26,7 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   release-vue-stylelint-editor:
-    name: check version, and release
+    name: check version, and release for vue-stylelint-editor
     runs-on: ubuntu-latest
     steps:
     - name: checkout
