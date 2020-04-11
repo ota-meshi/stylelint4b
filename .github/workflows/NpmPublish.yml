@@ -21,8 +21,7 @@ jobs:
     - name: Build
       run: npm run build
     - name: check can npm-publish && release
-      run: 
-        - npx can-npm-publish && npm publish
+      run: npx can-npm-publish && npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   release-vue-stylelint-editor:
@@ -42,7 +41,6 @@ jobs:
     - name: Build
       run: npm run build
     - name: check can npm-publish && release
-      run: 
-        - npx can-npm-publish && npm publish
+      run: npx can-npm-publish && npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
