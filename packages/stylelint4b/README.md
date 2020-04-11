@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npm install stylelint4b
+npm install stylelint4b@alpha
 ```
 
 ## Usage
