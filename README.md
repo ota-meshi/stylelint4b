@@ -2,33 +2,10 @@
 
 `stylelint` which works in browsers.
 
-## Installation
+## Packages
 
-```bash
-npm install stylelint4b
-```
+- [stylelint4b]
+- [vue-stylelint-editor]
 
-## Usage
-
-```js
-const stylelint4b = require("stylelint4b")
-
-const config = {
-    extends: "stylelint-config-standard",
-}
-
-const result = await stylelint4b
-            .lint({
-                code: `
-.cl {
-    color: red
-}
-`,
-                codeFilename: "a.css",
-                config,
-                fix
-            })
-
-const warnings = resultObject.results[0].warnings
-const output = resultObject.output
-```
+[stylelint4b]: ./packages/stylelint4b/README.md
+[vue-stylelint-editor]: ./packages/vue-stylelint-editor/README.md
