@@ -1,0 +1,34 @@
+{
+  "name": "stylelint4b",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "test": "cd ./packages/stylelint4b && npm run test && cd ../vue-stylelint-editor && npm run test && cd ../../",
+    "test:chrome": "cd ./packages/stylelint4b && npm run test:chrome && cd ../vue-stylelint-editor && npm run test:chrome && cd ../../",
+    "lint": "eslint . --ext .js,.vue",
+    "lint:fix": "eslint . --ext .js,.vue --fix",
+    "build": "cd ./packages/stylelint4b && npm run build && cd ../vue-stylelint-editor && npm run build && cd ../../",
+    "build:dev": "cd ./packages/stylelint4b && npm run build:dev && cd ../vue-stylelint-editor && npm run build:dev && cd ../../",
+    "postinstall": "cd ./packages/stylelint4b && npm i && cd ../vue-stylelint-editor && npm i && cd ../stylelint-playground-test && npm i && cd ../../"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/stylelint4b.git"
+  },
+  "author": "Yosuke Ota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/stylelint4b/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/stylelint4b#readme",
+  "devDependencies": {
+    "@mysticatea/eslint-plugin": "^13.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "typescript": "^3.7.3"
+  }
+}

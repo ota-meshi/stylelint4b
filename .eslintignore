@@ -1,0 +1,8 @@
+/sample
+/node_modules
+/packages/vue-stylelint-editor/dist
+/packages/vue-stylelint-editor/node_modules
+/packages/stylelint4b/dist
+/packages/stylelint4b/node_modules
+/packages/stylelint-playground-test/node_modules
+/dist

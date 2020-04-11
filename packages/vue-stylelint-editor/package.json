@@ -1,0 +1,46 @@
+{
+  "name": "vue-stylelint-editor",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.vue",
+  "unpkg": "dist/vue-stylelint-editor.js",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "test": "exit 0",
+    "test:chrome": "exit 0",
+    "build": "cross-env NODE_ENV=production node ./build",
+    "build:dev": "cross-env NODE_ENV=development node ./build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/stylelint4b.git"
+  },
+  "author": "Yosuke Ota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/stylelint4b/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/stylelint4b#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "url-loader": "^4.1.0",
+    "vue-loader": "^15.7.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.2",
+    "worker-loader": "^2.0.0"
+  },
+  "dependencies": {
+    "vue-eslint-editor": "^1.0.0"
+  }
+}

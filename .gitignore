@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+dist
+alias.js
+packages/stylelint4b/lib
+packages/stylelint4b/packages
+index.js
