@@ -1,6 +1,6 @@
 {
   "name": "stylelint4b",
-  "version": "0.0.1",
+  "version": "13.3.1-alpha.0",
   "description": "",
   "main": "index.js",
   "unpkg": "dist/stylelint4b.js",
@@ -45,5 +45,8 @@
     "stylelint-config-standard": "^20.0.0",
     "webpack": "^4.41.2",
     "webpack-merge": "^4.2.2"
+  },
+  "publishConfig": {
+    "tag": "alpha"
   }
 }

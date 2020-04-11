@@ -45,6 +45,7 @@ export default {
     data() {
         return {
             stylelint4b: null,
+            alias: null,
             format: {
                 insertSpaces: true,
                 tabSize: 2,
@@ -72,18 +73,16 @@ export default {
             return this.stylelint4b
         },
         config() {
-            const recommended = {
-                ...require("stylelint-plugin-stylus/recommended"),
+            const alias = this.alias
+            if (!alias) {
+                return {}
             }
-            delete recommended.plugins
-            const standard = {
-                ...require("stylelint-plugin-stylus/standard"),
-            }
-            delete standard.plugins
-            delete standard.extends
+
             return {
-                plugins: [require("stylelint-plugin-stylus")],
-                extends: ["stylelint-config-standard", recommended, standard],
+                extends: [
+                    "stylelint-config-standard",
+                    "stylelint-plugin-stylus/standard",
+                ],
                 rules: {},
             }
         },
@@ -96,15 +95,30 @@ export default {
     },
     methods: {
         async loadStylelint4b() {
-            const stylelint4b = await import("stylelint4b")
-            this.stylelint4b = stylelint4b
+            const stylelint4b = import("stylelint4b")
+            const alias = await import("stylelint4b/alias")
+
+            await alias.defineAliases({
+                "./node_modules/stylelint-plugin-stylus/recommended/index.js": import(
+                    "stylelint-plugin-stylus/recommended"
+                ),
+                "stylelint-plugin-stylus/standard": import(
+                    "stylelint-plugin-stylus/standard"
+                ),
+                "./node_modules/stylelint-plugin-stylus/lib/index.js": import(
+                    "stylelint-plugin-stylus"
+                ),
+                "stylelint-plugin-stylus/custom-syntax": import(
+                    "stylelint-plugin-stylus/custom-syntax"
+                ),
+            })
+
+            this.stylelint4b = await stylelint4b
+            this.alias = alias
         },
-        async loadConfig() {
-            const customSyntax = await import(
-                "stylelint-plugin-stylus/custom-syntax"
-            )
+        loadConfig() {
             this.options = {
-                customSyntax,
+                customSyntax: "stylelint-plugin-stylus/custom-syntax",
             }
         },
         /**

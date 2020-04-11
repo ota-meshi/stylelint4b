@@ -1,5 +1,6 @@
 "use strict"
 
+const alias = require("../alias-module")
 module.exports = {
     cosmiconfig,
 }
@@ -17,21 +18,10 @@ const stylelintConfigs = {
 function cosmiconfig(_moduleName, { transform }) {
     return {
         async load(filepath) {
-            let config = undefined
-            let resultFilepath = undefined
-            if (typeof filepath === "string") {
-                if (!stylelintConfigs[filepath]) {
-                    throw new Error(`Unknown path ${filepath}`)
-                }
-                config = stylelintConfigs[filepath]
-                resultFilepath = filepath
-            } else {
-                config = filepath
-                resultFilepath = ""
-            }
+            const config = stylelintConfigs[filepath] || alias.get(filepath)
             const cosmiconfigResult = {
                 config,
-                filepath: resultFilepath,
+                filepath,
             }
             const value = await transform(cosmiconfigResult)
             return value

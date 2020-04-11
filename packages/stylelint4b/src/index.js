@@ -3,6 +3,7 @@
 
 module.exports = {
     index: require("stylelint"),
+    alias: require("./alias-module"),
     "lib/rules/at-rule-blacklist": require("stylelint/lib/rules/at-rule-blacklist"),
     "lib/rules/at-rule-empty-line-before": require("stylelint/lib/rules/at-rule-empty-line-before"),
     "lib/rules/at-rule-name-case": require("stylelint/lib/rules/at-rule-name-case"),

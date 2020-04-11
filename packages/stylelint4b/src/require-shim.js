@@ -1,5 +1,6 @@
 "use strict"
 
+const alias = require("./alias-module")
 const MODULES = {
     /* eslint-disable @mysticatea/node/no-extraneous-require */
     postcss: require("postcss"),
@@ -41,8 +42,7 @@ function requireFunction(moduleId) {
             return DIRECT_MODULES[modulePrefix](moduleIdAct)
         }
     }
-    console.error(`not found module:${moduleIdAct}`)
-    throw new Error(`not found module:${moduleIdAct}`)
+    return alias.get(moduleId)
 }
 
 requireFunction.resolve = function(p) {

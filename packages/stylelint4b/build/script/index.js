@@ -20,10 +20,19 @@ const POSTCSS_SYNTAX_ROOT = path.resolve(
     "../../node_modules/postcss-syntax",
 )
 
+clearDir(path.resolve(__dirname, "../../lib/reference"))
+clearDir(path.resolve(__dirname, "../../lib/rules"))
+clearDir(path.resolve(__dirname, "../../lib/utils"))
+clearDir(path.resolve(__dirname, "../../packages/postcss-syntax"))
+
 const targets = [
     {
         module: "stylelint",
         name: "index",
+    },
+    {
+        module: "./alias-module",
+        name: "alias",
     },
     // {
     //     module: "postcss-syntax",
@@ -85,7 +94,7 @@ targets.push(
 
 const indexPath = path.resolve(__dirname, "../../src/index.js")
 
-fs.writeFileSync(
+writeFileSync(
     indexPath,
     `"use strict"
 /* eslint-disable @mysticatea/node/no-extraneous-require */
@@ -102,7 +111,7 @@ const formatFiles = [indexPath]
 for (const target of targets) {
     const libPath = path.resolve(__dirname, `../../${target.name}.js`)
     const level = target.name.split("/").length - 1
-    fs.writeFileSync(
+    writeFileSync(
         libPath,
         `"use strict"
 
@@ -119,3 +128,40 @@ for (const target of targets) {
 const linter = new eslint.CLIEngine({ fix: true })
 const report = linter.executeOnFiles(formatFiles)
 eslint.CLIEngine.outputFixes(report)
+
+// eslint-disable-next-line require-jsdoc
+function clearDir(dir) {
+    if (!isExist(dir)) {
+        return
+    }
+    for (const file of fs.readdirSync(dir)) {
+        fs.unlinkSync(path.join(dir, file))
+    }
+}
+
+// eslint-disable-next-line require-jsdoc
+function isExist(file) {
+    try {
+        fs.statSync(file)
+        return true
+    } catch (err) {
+        if (err.code === "ENOENT") {
+            return false
+        }
+        throw err
+    }
+}
+
+// eslint-disable-next-line require-jsdoc
+function writeFileSync(file, ...args) {
+    const parents = []
+    let parent = path.dirname(file)
+    while (!isExist(parent)) {
+        parents.push(parent)
+        parent = path.dirname(parent)
+    }
+    while (parents.length) {
+        fs.mkdirSync(parents.pop())
+    }
+    fs.writeFileSync(file, ...args)
+}
