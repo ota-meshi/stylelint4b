@@ -30,7 +30,7 @@ function requireFunction(moduleId) {
     if (moduleId != null && typeof moduleId === "object") {
         return moduleId
     }
-    let moduleIdAct = moduleId
+    let moduleIdAct = String(moduleId)
     if (moduleIdAct.startsWith("./node_modules/")) {
         moduleIdAct = moduleIdAct.slice(15)
     }
