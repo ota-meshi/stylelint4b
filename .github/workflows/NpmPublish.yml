@@ -15,7 +15,7 @@ jobs:
       with:
         registry-url: 'https://registry.npmjs.org'
     - name: Install Packages
-      run: cd ./packages/stylelint4b && npm install
+      run: npm install
     - name: Build
       run: cd ./packages/stylelint4b && npm run build
     - name: check can npm-publish && release
@@ -33,7 +33,7 @@ jobs:
       with:
         registry-url: 'https://registry.npmjs.org'
     - name: Install Packages
-      run: cd ./packages/vue-stylelint-editor && npm install
+      run: npm install
     - name: Build
       run: cd ./packages/vue-stylelint-editor && npm run build
     - name: check can npm-publish && release
