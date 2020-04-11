@@ -10,15 +10,15 @@ module.exports = {
      * @param {any} moduleObject
      */
     async defineAlias(moduleId, moduleObject) {
-        alias.set(moduleId, await moduleObject)
+        alias.set(String(moduleId), await moduleObject)
     },
     async defineAliases(aliases) {
         for (const moduleId of Object.keys(aliases)) {
-            alias.set(moduleId, await aliases[moduleId])
+            alias.set(String(moduleId), await aliases[moduleId])
         }
     },
     get(moduleId) {
-        const m = alias.get(moduleId)
+        const m = alias.get(String(moduleId))
         if (m) {
             return m
         }
@@ -26,6 +26,6 @@ module.exports = {
         throw new Error(`not found module: ${moduleId}`)
     },
     has(moduleId) {
-        return alias.has(moduleId)
+        return alias.has(String(moduleId))
     },
 }
