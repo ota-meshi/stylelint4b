@@ -1,5 +1,8 @@
 # stylelint4b
 
+[![NPM license](https://img.shields.io/npm/l/stylelint4b.svg)](https://www.npmjs.com/package/stylelint4b)
+[![NPM version](https://img.shields.io/npm/v/stylelint4b.svg)](https://www.npmjs.com/package/stylelint4b)
+
 [stylelint] which works in browsers.
 
 ## Installation

@@ -1,8 +1,11 @@
 # vue-stylelint-editor
 
+[![NPM license](https://img.shields.io/npm/l/vue-stylelint-editor.svg)](https://www.npmjs.com/package/vue-stylelint-editor)
+[![NPM version](https://img.shields.io/npm/v/vue-stylelint-editor.svg)](https://www.npmjs.com/package/vue-stylelint-editor)
+
 This package provides [Vue.js] component of a code editor for [stylelint] playgrounds.
 
-This idea and implementation is based on [eslint4b] and [vue-stylelint-editor].
+This idea and implementation is based on [eslint4b] and [vue-eslint-editor].
 
 ## Installation
 
@@ -169,6 +172,7 @@ The first argument has the following properties:
 
 [eslint4b]: https://www.npmjs.com/package/eslint4b
 [vue-stylelint-editor]: https://www.npmjs.com/package/vue-stylelint-editor
+[vue-eslint-editor]: https://www.npmjs.com/package/vue-eslint-editor
 [stylelint]: https://stylelint.io/
 [Vue.js]: https://vuejs.org/
 [stylelint4b]: ../stylelint4b/README.md
