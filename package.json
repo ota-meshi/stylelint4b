@@ -38,7 +38,7 @@
     "@mysticatea/eslint-plugin": "^13.0.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
-    "stylelint4b": "^13.3.2-b.0",
+    "stylelint4b": "^13.3.2-4b.0",
     "typescript": "^3.7.3",
     "vue-stylelint-editor": "^0.1.0",
     "vuepress": "^1.4.0"
