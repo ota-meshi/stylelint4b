@@ -20,7 +20,7 @@ jobs:
       run: cd ./packages/stylelint4b && npm run build
     - name: check can npm-publish && release
       run: |
-        cd ./packages/vue-stylelint-editor
+        cd ./packages/stylelint4b
         npx can-npm-publish && npm publish || true
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

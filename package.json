@@ -19,7 +19,8 @@
     "postinstall": "cd ./packages/stylelint4b && npm i && cd ../vue-stylelint-editor && npm i && cd ../stylelint-playground-test && npm i && cd ../../",
     "docs:watch": "vuepress dev --no-cache docs",
     "docs:build": "vuepress build --no-cache docs",
-    "docs-deploysetup": "npm run docs:build && npm run docs-deploysetup:clean && npm run docs-deploysetup:copy",
+    "docs:update": "npm i -D stylelint4b@latest vue-stylelint-editor@latest",
+    "docs-deploysetup": "npm run docs:update && npm run docs:build && npm run docs-deploysetup:clean && npm run docs-deploysetup:copy",
     "docs-deploysetup:clean": "rimraf assets",
     "docs-deploysetup:copy": "npx cpx \"docs/\\.vuepress/dist/**\" . -u"
   },
@@ -37,9 +38,9 @@
     "@mysticatea/eslint-plugin": "^13.0.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
-    "stylelint4b": "^13.3.1-alpha.3",
+    "stylelint4b": "^13.3.1-alpha.0",
     "typescript": "^3.7.3",
-    "vue-stylelint-editor": "0.0.1",
+    "vue-stylelint-editor": "^0.1.0",
     "vuepress": "^1.4.0"
   }
 }
