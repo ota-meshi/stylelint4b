@@ -2,10 +2,11 @@
   "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "eslint.workingDirectories": [
     "./",
-    "./packages/stylelint-playground-test/docs/.vuepress"
+    "./packages/stylelint-playground-test/docs/.vuepress",
+    "./docs/.vuepress"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
-  }
+  },
 }

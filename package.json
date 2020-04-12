@@ -1,11 +1,14 @@
 {
-  "name": "stylelint4b",
-  "version": "13.3.1-alpha.3",
+  "name": "stylelint4b-root",
+  "version": "13.3.2",
   "private": true,
   "description": "",
   "engines": {
     "node": ">=12"
   },
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "test": "cd ./packages/stylelint4b && npm run test && cd ../vue-stylelint-editor && npm run test && cd ../../",
     "test:chrome": "cd ./packages/stylelint4b && npm run test:chrome && cd ../vue-stylelint-editor && npm run test:chrome && cd ../../",
@@ -13,7 +16,12 @@
     "lint:fix": "eslint . --ext .js,.vue --fix",
     "build": "cd ./packages/stylelint4b && npm run build && cd ../vue-stylelint-editor && npm run build && cd ../../",
     "build:dev": "cd ./packages/stylelint4b && npm run build:dev && cd ../vue-stylelint-editor && npm run build:dev && cd ../../",
-    "postinstall": "cd ./packages/stylelint4b && npm i && cd ../vue-stylelint-editor && npm i && cd ../stylelint-playground-test && npm i && cd ../../"
+    "postinstall": "cd ./packages/stylelint4b && npm i && cd ../vue-stylelint-editor && npm i && cd ../stylelint-playground-test && npm i && cd ../../",
+    "docs:watch": "vuepress dev --no-cache docs",
+    "docs:build": "vuepress build --no-cache docs",
+    "docs-deploysetup": "npm run docs:build && npm run docs-deploysetup:clean && npm run docs-deploysetup:copy",
+    "docs-deploysetup:clean": "rimraf assets",
+    "docs-deploysetup:copy": "npx cpx \"docs/\\.vuepress/dist/**\" . -u"
   },
   "repository": {
     "type": "git",
@@ -29,6 +37,9 @@
     "@mysticatea/eslint-plugin": "^13.0.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
-    "typescript": "^3.7.3"
+    "stylelint4b": "^13.3.1-alpha.3",
+    "typescript": "^3.7.3",
+    "vue-stylelint-editor": "0.0.1",
+    "vuepress": "^1.4.0"
   }
 }

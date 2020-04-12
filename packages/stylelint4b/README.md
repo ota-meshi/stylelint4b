@@ -4,6 +4,10 @@
 
 This idea and implementation is based on [eslint4b].
 
+## Documentation
+
+See [documentation](https://ota-meshi.github.io/stylelint4b/stylelint4b/).
+
 ## Installation
 
 ```bash
