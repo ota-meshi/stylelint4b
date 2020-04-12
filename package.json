@@ -50,7 +50,7 @@
     "stylelint-order": "^4.0.0",
     "stylelint-plugin-stylus": "^0.9.0",
     "stylelint-scss": "^3.17.2",
-    "stylelint4b": "^13.3.3-4b.0",
+    "stylelint4b": "^13.4.0-4b.0",
     "typescript": "^3.7.3",
     "vue-stylelint-editor": "^0.5.0",
     "vuepress": "^1.4.0"

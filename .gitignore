@@ -68,7 +68,3 @@ dist
 /packages/stylelint4b/packages
 
 # gh-pages
-/index.html
-/assets
-/stylelint4b
-/vue-stylelint-editor
