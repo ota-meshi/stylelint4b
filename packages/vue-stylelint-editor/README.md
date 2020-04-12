@@ -4,6 +4,10 @@ This package provides [Vue.js] component of a code editor for [stylelint] playgr
 
 This idea and implementation is based on [eslint4b] and [vue-eslint-editor].
 
+## Documentation
+
+See [documentation](https://ota-meshi.github.io/stylelint4b/vue-stylelint-editor/).
+
 ## Installation
 
 ```bash

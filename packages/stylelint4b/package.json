@@ -1,6 +1,6 @@
 {
   "name": "stylelint4b",
-  "version": "13.3.1-alpha.3",
+  "version": "13.3.2",
   "description": "",
   "main": "index.js",
   "unpkg": "dist/stylelint4b.js",
@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/ota-meshi/stylelint4b/issues"
   },
-  "homepage": "https://github.com/ota-meshi/stylelint4b#readme",
+  "homepage": "https://ota-meshi.github.io/stylelint4b/stylelint4b/",
   "devDependencies": {
     "chai": "^4.2.0",
     "cross-env": "^6.0.3",
@@ -41,13 +41,10 @@
     "mocha": "^6.2.2",
     "raw-loader": "^4.0.0",
     "string-replace-loader": "^2.2.0",
-    "stylelint": "^13.3.1",
+    "stylelint": "^13.3.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^20.0.0",
     "webpack": "^4.41.2",
     "webpack-merge": "^4.2.2"
-  },
-  "publishConfig": {
-    "tag": "alpha"
   }
 }

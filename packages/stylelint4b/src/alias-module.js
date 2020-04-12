@@ -12,6 +12,9 @@ module.exports = {
     async defineAlias(moduleId, moduleObject) {
         alias.set(String(moduleId), await moduleObject)
     },
+    /**
+     * @param { { [moduleId: string]: any } } aliases
+     */
     async defineAliases(aliases) {
         for (const moduleId of Object.keys(aliases)) {
             alias.set(String(moduleId), await aliases[moduleId])
