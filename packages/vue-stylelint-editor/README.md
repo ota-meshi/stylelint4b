@@ -11,7 +11,7 @@ See [documentation](https://ota-meshi.github.io/stylelint4b/vue-stylelint-editor
 ## Installation
 
 ```bash
-npm install stylelint4b@alpha vue-stylelint-editor@alpha
+npm install stylelint4b vue-stylelint-editor
 ```
 
 ## Usage

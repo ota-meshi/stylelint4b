@@ -11,7 +11,7 @@ See [documentation](https://ota-meshi.github.io/stylelint4b/stylelint4b/).
 ## Installation
 
 ```bash
-npm install stylelint4b@alpha
+npm install stylelint4b
 ```
 
 ## Usage

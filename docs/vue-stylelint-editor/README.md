@@ -7,7 +7,7 @@ This idea and implementation is based on [eslint4b] and [vue-stylelint-editor].
 ## Installation
 
 ```bash
-npm install stylelint4b@alpha vue-stylelint-editor@alpha
+npm install stylelint4b vue-stylelint-editor
 ```
 
 ## Usage
