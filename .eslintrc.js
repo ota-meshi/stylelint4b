@@ -30,25 +30,4 @@ module.exports = {
         "@mysticatea/vue/html-indent": "off",
         "@mysticatea/vue/html-self-closing": "off",
     },
-
-    overrides: [
-        {
-            files: ["scripts/*.js"],
-            rules: {
-                "require-jsdoc": "off",
-            },
-        },
-        {
-            files: ["lib/*.js"],
-            extends: [
-                "plugin:@mysticatea/+browser",
-            ],
-        },
-        {
-            files: ["lib/vue-stylelint-editor/*.js"],
-            extends: [
-                "plugin:@mysticatea/+modules",
-            ],
-        },
-    ],
 }

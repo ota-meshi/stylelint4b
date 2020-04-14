@@ -1,5 +1,3 @@
-"use strict"
-
 const webpack = require("webpack")
 const configVueStylelintEditor = require("./webpack.config.vue-stylelint-editor")
 
