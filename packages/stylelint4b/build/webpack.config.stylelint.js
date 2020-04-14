@@ -17,6 +17,9 @@ module.exports = merge(base, {
     // target: "node",
     mode: process.env.NODE_ENV || "production",
     /* eslint-enable no-process-env */
+    optimization: {
+        minimize: false,
+    },
     entry: {
         bundle: require.resolve("../src/index.js"),
     },

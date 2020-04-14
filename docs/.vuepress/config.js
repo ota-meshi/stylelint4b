@@ -1,7 +1,28 @@
+const path = require("path")
+
+const DEV = process.env.NODE_ENV === "development"
+
 module.exports = {
     base: "/stylelint4b/",
-    title: "stylelint4b",
-    description: "stylelint4b",
+    title: "stylelint4b & vue-stylelint-editor",
+    description: "stylelint which works in browsers.",
+
+    configureWebpack: DEV
+        ? {
+              resolve: {
+                  alias: {
+                      stylelint4b: path.resolve(
+                          __dirname,
+                          "../../packages/stylelint4b",
+                      ),
+                      "vue-stylelint-editor": path.resolve(
+                          __dirname,
+                          "../../packages/vue-stylelint-editor",
+                      ),
+                  },
+              },
+          }
+        : undefined,
     head: [
         // ["link", { rel: "icon", type: "image/png", href: "/logo.png" }]
     ],
@@ -20,7 +41,7 @@ module.exports = {
         ],
 
         sidebar: {
-            "/": ["/", "/stylelint4b/", "/vue-stylelint-editor/"],
+            "/": ["/", "/stylelint4b/", "/vue-stylelint-editor/", "/examples/"],
         },
     },
 }

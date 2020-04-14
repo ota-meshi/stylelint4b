@@ -500,7 +500,9 @@ export default {
                     fix: true,
                 })
                 this.fixedCode =
-                    typeof ret.output === "string" && ret.output !== code
+                    ret.output &&
+                    typeof ret.output === "string" &&
+                    ret.output !== code
                         ? ret.output
                         : code
                 this.fixedMessages = ret.results[0].warnings

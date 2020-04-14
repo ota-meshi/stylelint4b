@@ -1,5 +1,5 @@
 <template>
-    <stylelint-editor
+    <vue-stylelint-editor
         style="height: 300px; border: solid 1px #ddd;"
         :stylelint="stylelint4b"
         :code="code"
@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import StylelintEditor from "vue-stylelint-editor"
+import VueStylelintEditor from "vue-stylelint-editor"
 
 export default {
-    components: { StylelintEditor },
+    components: { VueStylelintEditor },
     data() {
         return {
             stylelint4b: null,
