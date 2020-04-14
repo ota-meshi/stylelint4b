@@ -1,8 +1,8 @@
 {
   "name": "stylelint4b-root",
-  "version": "13.3.2",
+  "version": "1.0.0",
   "private": true,
-  "description": "",
+  "description": "stylelint which works in browsers.",
   "engines": {
     "node": ">=12"
   },
@@ -16,7 +16,7 @@
     "lint:fix": "eslint . --ext .js,.vue --fix",
     "build": "cd ./packages/stylelint4b && npm run build && cd ../vue-stylelint-editor && npm run build && cd ../../",
     "build:dev": "cd ./packages/stylelint4b && npm run build:dev && cd ../vue-stylelint-editor && npm run build:dev && cd ../../",
-    "postinstall": "cd ./packages/stylelint4b && npm i && cd ../vue-stylelint-editor && npm i && cd ../stylelint-playground-test && npm i && cd ../../",
+    "postinstall": "cd ./packages/stylelint4b && npm i && cd ../vue-stylelint-editor && npm i && cd ../../",
     "docs:watch": "vuepress dev --no-cache docs",
     "docs:build": "vuepress build --no-cache docs",
     "docs:update": "npm i -D stylelint4b@latest vue-stylelint-editor@latest",
@@ -37,10 +37,11 @@
   "devDependencies": {
     "@mysticatea/eslint-plugin": "^13.0.0",
     "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
     "eslint": "^6.7.2",
-    "stylelint4b": "^13.3.2-4b.0",
+    "stylelint4b": "^13.3.2-4b.1",
     "typescript": "^3.7.3",
-    "vue-stylelint-editor": "^0.1.0",
+    "vue-stylelint-editor": "^0.2.0",
     "vuepress": "^1.4.0"
   }
 }
