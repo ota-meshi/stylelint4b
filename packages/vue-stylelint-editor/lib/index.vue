@@ -61,6 +61,8 @@
 </template>
 
 <script>
+import { languageSetup } from "./languages"
+
 const EDITOR_OPTS = {
     autoIndent: true,
     automaticLayout: true,
@@ -308,6 +310,7 @@ export default {
             // Finish loading.
             this.monaco = monaco
             this.loadLanguage = loadLanguage
+            languageSetup(monaco)
         })().catch(error => {
             console.error("Failed to load Monaco editor:", error)
             this.monacoLoadingError = error

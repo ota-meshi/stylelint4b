@@ -59,11 +59,13 @@ typings/
 
 # next.js build output
 .next
+
+# build
 dist
-alias.js
-packages/stylelint4b/lib
-packages/stylelint4b/packages
-index.js
+/packages/stylelint4b/index.js
+/packages/stylelint4b/alias.js
+/packages/stylelint4b/lib
+/packages/stylelint4b/packages
 
 # gh-pages
 /index.html

@@ -1,5 +1,4 @@
 /* eslint-disable no-process-env */
-"use strict"
 
 const webpack = require("webpack")
 const VueLoaderPlugin = require("vue-loader/lib/plugin")
