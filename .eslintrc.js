@@ -29,5 +29,6 @@ module.exports = {
         "@mysticatea/vue/html-closing-bracket-newline": "off",
         "@mysticatea/vue/html-indent": "off",
         "@mysticatea/vue/html-self-closing": "off",
+        "@mysticatea/vue/singleline-html-element-content-newline": "off"
     },
 }

@@ -2,7 +2,7 @@
 
 [stylelint] which works in browsers. and [Vue.js] component of a code editor for [stylelint] playgrounds.
 
-<playground-block/>
+<hero-playground-block/>
 
 This idea and implementation is based on [eslint4b] and [vue-eslint-editor].
 

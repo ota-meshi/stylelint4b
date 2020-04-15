@@ -576,9 +576,17 @@ export default {
     opacity: 0.3;
     transition: opacity 0.3s;
 }
+
+.vue-stylelint-editor-actions,
+.vue-stylelint-editor-actions button {
+    background-color: #fff;
+    color: #1e1e1e;
+}
+
 .vue-stylelint-editor-actions:hover {
     opacity: 1;
 }
+
 .vue-stylelint-editor-actions::before {
     content: "\1F527";
     display: inline-block;
@@ -586,12 +594,6 @@ export default {
     padding: 5px;
     font-size: 1em;
     vertical-align: middle;
-}
-
-.vue-stylelint-editor-actions,
-.vue-stylelint-editor-actions button {
-    background-color: #ffffff;
-    color: #1e1e1e;
 }
 
 .vue-stylelint-editor-dark .vue-stylelint-editor-actions,
@@ -614,12 +616,15 @@ export default {
     vertical-align: middle;
     cursor: pointer;
 }
+
 .vue-stylelint-editor-root .vue-stylelint-editor-actions > *:hover {
     background-color: rgba(128, 128, 128, 0.2);
 }
+
 .vue-stylelint-editor-root .vue-stylelint-editor-actions > *:active {
     background-color: rgba(128, 128, 128, 0.4);
 }
+
 .vue-stylelint-editor-actions input[type="checkbox"] {
     display: none;
 }
@@ -629,9 +634,10 @@ export default {
     box-sizing: border-box;
     height: 100%;
     white-space: pre;
-    background-color: #ffffff;
+    background-color: #fff;
     color: #1e1e1e;
 }
+
 .vue-stylelint-editor-root.vue-stylelint-editor-dark
     .vue-stylelint-editor-placeholder-code {
     background-color: #1e1e1e;
@@ -662,6 +668,7 @@ export default {
     margin-right: 4px;
     vertical-align: middle;
 }
+
 .vue-stylelint-editor-placeholder-loading-icon > div {
     position: absolute;
     border-radius: 50%;
@@ -670,11 +677,13 @@ export default {
     border-style: none solid none solid;
     animation: VueStylelintEditorLoadingIcon 1s linear infinite;
 }
+
 .vue-stylelint-editor-placeholder-loading-icon > div:nth-child(1) {
     height: 100%;
     width: 100%;
     animation-duration: 1.3s;
 }
+
 .vue-stylelint-editor-placeholder-loading-icon > div:nth-child(2) {
     top: 1px;
     left: 2px;
@@ -682,6 +691,7 @@ export default {
     height: calc(100% - 2px);
     animation-duration: 0.7s;
 }
+
 .vue-stylelint-editor-placeholder-loading-icon > div:nth-child(3) {
     top: 2px;
     left: 4px;
@@ -700,9 +710,11 @@ export default {
     0% {
         transform: rotateY(0deg);
     }
+
     50% {
         transform: rotateY(210deg);
     }
+
     100% {
         transform: rotateY(360deg);
     }
@@ -712,6 +724,7 @@ export default {
 .vue-stylelint-editor-fade-leave-active {
     transition: opacity 0.3s ease;
 }
+
 .vue-stylelint-editor-fade-enter,
 .vue-stylelint-editor-fade-leave-to {
     opacity: 0;

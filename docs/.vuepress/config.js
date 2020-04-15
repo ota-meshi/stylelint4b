@@ -41,7 +41,13 @@ module.exports = {
         ],
 
         sidebar: {
-            "/": ["/", "/stylelint4b/", "/vue-stylelint-editor/", "/examples/"],
+            "/": [
+                "/",
+                "/stylelint4b/",
+                "/vue-stylelint-editor/",
+                "/examples/",
+                "/Playground.html",
+            ],
         },
     },
 }
