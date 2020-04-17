@@ -230,6 +230,7 @@ export default {
                     "stylelint-config-sass-guidelines"
                 ),
                 "stylelint-order": import("stylelint-order"),
+                "postcss-styl": import("postcss-styl"),
             })
             this.stylelint4b = stylelint4b
             this.alias = alias
