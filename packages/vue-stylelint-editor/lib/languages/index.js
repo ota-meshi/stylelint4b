@@ -1,4 +1,5 @@
 import stylus from "./stylus"
+import scss from "./scss"
 
 let languageSetted = false
 
@@ -13,6 +14,7 @@ export function languageSetup(monaco) {
     }
     languageSetted = true
     stylusLanguageSetup(monaco)
+    scssLanguageSetup(monaco)
 }
 
 /**
@@ -23,4 +25,14 @@ export function languageSetup(monaco) {
 function stylusLanguageSetup(monaco) {
     monaco.languages.register({ id: "stylus" })
     monaco.languages.setMonarchTokensProvider("stylus", stylus)
+}
+
+/**
+ * Setup Monarch for scss
+ * @param {object} monaco monaco object
+ * @returns {void}
+ */
+function scssLanguageSetup(monaco) {
+    monaco.languages.register({ id: "scss" })
+    monaco.languages.setMonarchTokensProvider("scss", scss)
 }

@@ -9,6 +9,7 @@
             :stylelint="stylelint"
             :style="{ height: editorHeight }"
             :config="objectConfig"
+            :options="options"
             dark
             :format="format"
             :language="language"
@@ -42,6 +43,8 @@
 import path from "path"
 import VueStylelintEditor from "vue-stylelint-editor"
 import JsonEditor from "./playground/components/JsonEditor.vue"
+import yaml from "js-yaml"
+import stripComments from "strip-json-comments"
 import { deserializeState, serializeState } from "./playground/state"
 
 const CODE_DEFAULT = "a {color: #FFF; }"
@@ -49,6 +52,24 @@ const CONFIG_DEFAULT = `{
   "extends": "stylelint-config-standard"
 }`
 const FILENAME_DEFAULT = "test.css"
+
+// eslint-disable-next-line require-jsdoc
+function parseConfig(str) {
+    let error = null
+
+    try {
+        return JSON.parse(stripComments(str))
+    } catch (e) {
+        error = error || e
+    }
+    try {
+        return yaml.safeLoad(stripComments(str))
+    } catch (e) {
+        error = error || e
+    }
+    throw error
+}
+
 export default {
     name: "Playground",
     components: { VueStylelintEditor, JsonEditor },
@@ -67,16 +88,26 @@ export default {
         }
     },
     computed: {
+        options() {
+            return {
+                customSyntax: "stylelint-plugin-stylus/custom-syntax",
+            }
+        },
         objectConfig() {
-            try {
-                return JSON.parse(this.config)
-            } catch {
+            const alias = this.alias
+            if (!alias) {
                 return {}
             }
+            try {
+                return parseConfig(this.config)
+            } catch {
+                /* nop */
+            }
+            return {}
         },
         configError() {
             try {
-                JSON.parse(this.config)
+                parseConfig(this.config)
                 return ""
             } catch (e) {
                 return e.message
@@ -97,6 +128,9 @@ export default {
                 case ".styl":
                 case ".stylus":
                     return "stylus"
+                case ".scss":
+                case ".sass":
+                    return "scss"
                 default:
                     break
             }
@@ -172,7 +206,33 @@ export default {
     },
     methods: {
         async loadStylelint4b() {
-            this.stylelint4b = await import("stylelint4b")
+            const [stylelint4b, alias] = await Promise.all([
+                import("stylelint4b"),
+                import("stylelint4b/alias"),
+            ])
+
+            await alias.defineAliases({
+                [require.resolve(
+                    "stylelint-plugin-stylus/recommended",
+                )]: import("stylelint-plugin-stylus/recommended"),
+                "stylelint-plugin-stylus/standard": import(
+                    "stylelint-plugin-stylus/standard"
+                ),
+                "stylelint-plugin-stylus": import("stylelint-plugin-stylus"),
+                [require.resolve("stylelint-plugin-stylus")]: import(
+                    "stylelint-plugin-stylus"
+                ),
+                "stylelint-plugin-stylus/custom-syntax": import(
+                    "stylelint-plugin-stylus/custom-syntax"
+                ),
+                "stylelint-scss": import("stylelint-scss"),
+                "stylelint-config-sass-guidelines": import(
+                    "stylelint-config-sass-guidelines"
+                ),
+                "stylelint-order": import("stylelint-order"),
+            })
+            this.stylelint4b = stylelint4b
+            this.alias = alias
         },
         onUrlHashChange() {
             const serializedString =
