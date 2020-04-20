@@ -1,6 +1,6 @@
 {
   "name": "vue-stylelint-editor",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "This package provides Vue.js component of a code editor for stylelint playgrounds.",
   "main": "lib/index.vue",
   "unpkg": "dist/vue-stylelint-editor.js",
@@ -41,6 +41,6 @@
     "worker-loader": "^2.0.0"
   },
   "dependencies": {
-    "vue-eslint-editor": "^1.0.0"
+    "vue-eslint-editor": "^1.1.0"
   }
 }

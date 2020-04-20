@@ -38,7 +38,7 @@ module.exports = {
             // ./node_modules/postcss-syntax/...
             // Critical dependency: the request of a dependency is an expression
             {
-                test: /node_modules\/postcss-syntax\/(patch-postcss|load-syntax|get-syntax|processor)\.js$/u,
+                test: /node_modules\/postcss-syntax\/(load-syntax|get-syntax|processor)\.js$/u,
                 loader: "string-replace-loader",
                 options: {
                     search: "require\\(([^\"'].*?)\\)|require\\((.*?[^\"'])\\)",
@@ -73,12 +73,10 @@ module.exports = {
             "stylelint/lib/formatters/index.js",
             "stylelint/lib/utils/getModulePath.js",
             "stylelint/lib/utils/FileCache.js",
+            "postcss-syntax/patch-postcss.js",
         ].map(file => {
             const reg = new RegExp(
-                `node_modules/${file}`.replace(
-                    /[.*+\-?^${}()|[\]\\]/gu,
-                    "\\$&",
-                ),
+                `node_modules/${file}`.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&"),
                 "u",
             )
 

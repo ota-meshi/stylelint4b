@@ -1,6 +1,6 @@
 {
   "name": "stylelint4b",
-  "version": "13.3.2-4b.2",
+  "version": "13.3.2-4b.3",
   "description": "stylelint which works in browsers.",
   "main": "index.js",
   "unpkg": "dist/stylelint4b.js",

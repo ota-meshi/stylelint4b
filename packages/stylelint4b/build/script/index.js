@@ -20,6 +20,11 @@ const POSTCSS_SYNTAX_ROOT = path.resolve(
     "../../node_modules/postcss-syntax",
 )
 
+const POSTCSS_LIB_ROOT = path.resolve(
+    __dirname,
+    "../../node_modules/postcss/lib",
+)
+
 clearDir(path.resolve(__dirname, "../../lib/reference"))
 clearDir(path.resolve(__dirname, "../../lib/rules"))
 clearDir(path.resolve(__dirname, "../../lib/utils"))
@@ -90,6 +95,20 @@ targets.push(
             module: `postcss-syntax/${file}`,
             name: `packages/postcss-syntax/${file}`,
         })),
+)
+targets.push(
+    ...fs
+        .readdirSync(POSTCSS_LIB_ROOT)
+        .filter(file => path.extname(file) === ".js")
+        .map(file => path.basename(file, ".js"))
+        .map(file => ({
+            module: `postcss/lib/${file}`,
+            name: `packages/postcss/lib/${file}`,
+        })),
+    {
+        module: "postcss/lib/postcss",
+        name: "packages/postcss/index",
+    },
 )
 
 const indexPath = path.resolve(__dirname, "../../src/index.js")

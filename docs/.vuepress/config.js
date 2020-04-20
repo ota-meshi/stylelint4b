@@ -10,6 +10,12 @@ const webpackAlias = {
     stylelint: DEV
         ? path.resolve(__dirname, "../../packages/stylelint4b")
         : path.resolve(__dirname, "../../node_modules/stylelint4b"),
+    postcss: DEV
+        ? path.resolve(__dirname, "../../packages/stylelint4b/packages/postcss")
+        : path.resolve(
+              __dirname,
+              "../../node_modules/stylelint4b/packages/postcss",
+          ),
     "postcss-syntax": DEV
         ? path.resolve(
               __dirname,
