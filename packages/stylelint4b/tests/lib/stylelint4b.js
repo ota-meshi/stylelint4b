@@ -170,12 +170,20 @@ describe("stylelint4b", () => {
                 const actual = resultObject.results[0].warnings
                 expect(actual).to.deep.equal([
                     {
-                        line: 4,
-                        column: 15,
-                        rule: "block-closing-brace-newline-before",
+                        line: 3,
+                        column: 13,
+                        rule: "block-closing-brace-space-before",
                         severity: "error",
                         text:
-                            'Expected newline before "}" of a multi-line block (block-closing-brace-newline-before)',
+                            'Expected single space before "}" of a single-line block (block-closing-brace-space-before)',
+                    },
+                    {
+                        line: 3,
+                        column: 2,
+                        rule: "block-opening-brace-space-after",
+                        severity: "error",
+                        text:
+                            'Expected single space after "{" of a single-line block (block-opening-brace-space-after)',
                     },
                     {
                         line: 2,
