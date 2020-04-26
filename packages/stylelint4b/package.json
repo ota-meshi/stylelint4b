@@ -1,6 +1,6 @@
 {
   "name": "stylelint4b",
-  "version": "13.3.2-4b.3",
+  "version": "13.3.3-4b.0",
   "description": "stylelint which works in browsers.",
   "main": "index.js",
   "unpkg": "dist/stylelint4b.js",
@@ -48,7 +48,7 @@
     "raw-loader": "^4.0.0",
     "semver": "^7.3.2",
     "string-replace-loader": "^2.2.0",
-    "stylelint": "^13.3.2",
+    "stylelint": "^13.3.3",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^20.0.0",
     "webpack": "^4.41.2",
