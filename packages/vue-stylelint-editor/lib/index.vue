@@ -412,6 +412,11 @@ export default {
             const { monaco, stylelint } = this
             const startLineNumber = ensurePositiveInt(message.line, 1)
             const startColumn = ensurePositiveInt(message.column, 1)
+            const endLineNumber = ensurePositiveInt(
+                message.endLine,
+                startLineNumber,
+            )
+            const endColumn = ensurePositiveInt(message.endColumn, startColumn)
 
             const docUrl =
                 message.rule && stylelint.rules[message.rule]
@@ -423,13 +428,16 @@ export default {
 
             return {
                 code,
-                severity: monaco.MarkerSeverity.Error,
+                severity:
+                    message.severity === "warning"
+                        ? monaco.MarkerSeverity.Warning
+                        : monaco.MarkerSeverity.Error,
                 source: "stylelint",
                 message: message.text,
                 startLineNumber,
                 startColumn,
-                endLineNumber: startLineNumber,
-                endColumn: startColumn,
+                endLineNumber,
+                endColumn,
             }
         },
 
@@ -478,7 +486,7 @@ export default {
                     config,
                     fix: false,
                 })
-                this.messages = ret.results[0].warnings
+                this.messages = getAllWarnings(ret)
             } catch (err) {
                 this.messages = [
                     {
@@ -505,7 +513,7 @@ export default {
                     ret.output !== code
                         ? ret.output
                         : code
-                this.fixedMessages = ret.results[0].warnings
+                this.fixedMessages = getAllWarnings(ret)
             } catch (err) {
                 this.fixedCode = code
                 this.fixedMessages = [
@@ -544,6 +552,31 @@ export default {
             }
         },
     },
+}
+
+/**
+ * Get all warnings
+ */
+function getAllWarnings(result) {
+    let warnings = result.results[0].warnings
+
+    if (result.needlessDisables && result.needlessDisables[0]) {
+        warnings = [
+            ...warnings,
+            ...result.needlessDisables[0].ranges.map(range => ({
+                rule: range.unusedRule,
+                text: `unused rule: ${range.unusedRule}, start line: ${
+                    range.start
+                }${range.end ? `, end line: ${range.end}` : ""}`,
+                line: range.start,
+                column: 0,
+                severity: "warning",
+                endLine: range.end,
+                endColumn: 0,
+            })),
+        ]
+    }
+    return warnings
 }
 </script>
 

@@ -90,6 +90,7 @@ export default {
     computed: {
         options() {
             return {
+                reportNeedlessDisables: true,
                 customSyntax: "stylelint-plugin-stylus/custom-syntax",
             }
         },
