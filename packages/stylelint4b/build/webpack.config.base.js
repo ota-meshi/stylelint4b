@@ -61,6 +61,40 @@ module.exports = {
                     flags: "g",
                 },
             },
+            // resolve
+            // ./node_modules/stylelint/lib/syntaxes/index.js 4:42-49
+            // Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+            {
+                test: /node_modules\/stylelint\/lib\/syntaxes\/index\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "require\\('import-lazy'\\)\\(require\\)",
+                    replace: () => "require('require-shim')",
+                    flags: "g",
+                },
+            },
+            {
+                test: /node_modules\/stylelint\/lib\/syntaxes\/index\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "importLazy\\((.*)\\)",
+                    replace: (_, params) => `require(${params})`,
+                    flags: "g",
+                },
+            },
+            // resolve
+            // ./node_modules/stylelint/lib/augmentConfig.js
+            // Critical dependency: the request of a dependency is an expression
+            {
+                test: /node_modules\/stylelint\/lib\/augmentConfig\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "require\\(\\s*([^\"'].*[^\"'])\\s*\\)",
+                    replace: (_, params) =>
+                        `require('require-shim')(${params})`,
+                    flags: "g",
+                },
+            },
         ],
     },
     // optimization: {
