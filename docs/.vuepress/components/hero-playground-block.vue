@@ -47,11 +47,6 @@ export default {
             return this.stylelint4b
         },
         config() {
-            const alias = this.alias
-            if (!alias) {
-                return {}
-            }
-
             return {
                 extends: "stylelint-config-standard",
             }
