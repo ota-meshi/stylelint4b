@@ -48,9 +48,9 @@
     "raw-loader": "^4.0.0",
     "semver": "^7.3.2",
     "string-replace-loader": "^2.2.0",
-    "stylelint": "^13.4.0",
-    "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-standard": "^20.0.0",
+    "stylelint": "github:stylelint/stylelint#v14",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-standard": "^22.0.0",
     "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^3.7.0",
     "webpack-merge": "^4.2.2"

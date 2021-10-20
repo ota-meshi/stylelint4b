@@ -16,15 +16,6 @@ const webpackAlias = {
               __dirname,
               "../../node_modules/stylelint4b/packages/postcss",
           ),
-    "postcss-syntax": DEV
-        ? path.resolve(
-              __dirname,
-              "../../packages/stylelint4b/packages/postcss-syntax",
-          )
-        : path.resolve(
-              __dirname,
-              "../../node_modules/stylelint4b/packages/postcss-syntax",
-          ),
     sax: require.resolve("./shim/sax"),
     glob: require.resolve("./shim/glob"),
 }

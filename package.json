@@ -23,7 +23,7 @@
     "docs-deploysetup": "npm run docs:update && npm run docs:build && npm run docs-deploysetup:clean && npm run docs-deploysetup:copy",
     "docs-deploysetup:clean": "rimraf assets",
     "docs-deploysetup:copy": "npx cpx \"docs/\\.vuepress/dist/**\" . -u",
-    "upgrade": "npm i -D stylelint@latest postcss-styl@latest stylelint-config-sass-guidelines@latest stylelint-config-standard@latest stylelint-order@latest stylelint-plugin-stylus@latest stylelint-scss@latest"
+    "upgrade": "npm i -D stylelint@latest postcss-styl@latest stylelint-config-standard@latest stylelint-order@latest stylelint-plugin-stylus@latest stylelint-scss@latest"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,6 @@
     "postcss-styl": "^0.7.1",
     "strip-json-comments": "^3.1.0",
     "stylelint": "^13.4.0",
-    "stylelint-config-sass-guidelines": "^7.0.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
     "stylelint-plugin-stylus": "^0.9.0",
