@@ -25,14 +25,13 @@ function requireFunction(moduleId) {
     if (moduleIdAct.startsWith("./node_modules/")) {
         moduleIdAct = moduleIdAct.slice(15)
     }
-    const m = alias.get(moduleId)
-    if (m) {
-        return m
+    if (alias.has(moduleId)) {
+        return alias.get(moduleId)
     }
     if (MODULES[moduleIdAct]) {
         return MODULES[moduleIdAct]()
     }
-    return m
+    return alias.get(moduleId)
 }
 
 requireFunction.resolve = function(p) {

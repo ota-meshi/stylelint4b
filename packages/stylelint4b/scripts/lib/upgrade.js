@@ -1,32 +1,36 @@
 "use strict"
 
 const fs = require("fs")
-const spawn = require("cross-spawn")
 const packageJsonPath = require.resolve("../../package.json")
+const semver = require("semver")
+const { exec, execInherit } = require("./exec")
 
 module.exports = function() {
-    const oldStylelintVersion = JSON.parse(
-        fs.readFileSync(packageJsonPath, "utf8"),
-    ).devDependencies.stylelint
-    spawn.sync(
-        "npm",
-        [
-            "i",
-            "-D",
-            "stylelint@latest",
-            "stylelint-config-recommended@latest",
-            "stylelint-config-standard@latest",
-        ],
-        {
-            stdio: "inherit",
-        },
-    )
-    const newStylelintVersion = JSON.parse(
-        fs.readFileSync(packageJsonPath, "utf8"),
-    ).devDependencies.stylelint
+    const stylelint4bVersion = [
+        JSON.parse(exec("npm", ["view", "stylelint4b", "version", "--json"])),
+    ]
+        .flat()
+        .reduce((mv, v) => (semver.lt(mv, v) ? v : mv))
 
-    if (oldStylelintVersion === newStylelintVersion) {
+    const oldDependencies = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"))
+        .devDependencies
+
+    const stylelintMaxVersion = [
+        JSON.parse(
+            exec("npm", [
+                "view",
+                `stylelint@${oldDependencies.stylelint}`,
+                "version",
+                "--json",
+            ]),
+        ),
+    ]
+        .flat()
+        .reduce((mv, v) => (semver.lt(mv, v) ? v : mv))
+    if (semver.lt(stylelintMaxVersion, stylelint4bVersion)) {
         return null
     }
-    return newStylelintVersion
+
+    execInherit("npm", ["i", "-D", `stylelint@^${stylelintMaxVersion}`])
+    return stylelintMaxVersion
 }
