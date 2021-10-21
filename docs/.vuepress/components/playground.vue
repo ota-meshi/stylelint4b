@@ -212,6 +212,7 @@ export default {
             ])
 
             await alias.defineAliases({
+                "postcss-scss": import("postcss-scss"),
                 [require.resolve(
                     "stylelint-plugin-stylus/recommended",
                 )]: import("stylelint-plugin-stylus/recommended"),
