@@ -5,12 +5,12 @@ const MODULES = {
     /* eslint-disable @mysticatea/node/no-extraneous-require */
     postcss: () => require("postcss"),
     "postcss-safe-parser": () => require("postcss-safe-parser"),
-    "postcss-scss": () => require("postcss-scss"),
-    "postcss-less": () => require("postcss-less"),
-    "postcss-sass": () => require("postcss-sass"),
-    "postcss-html": () => require("postcss-html"),
-    "postcss-styl": () => require("postcss-styl"),
-    sugarss: () => require("sugarss"),
+    // "postcss-scss": () => require("postcss-scss"),
+    // "postcss-less": () => require("postcss-less"),
+    // "postcss-sass": () => require("postcss-sass"),
+    // "postcss-html": () => require("postcss-html"),
+    // "postcss-styl": () => require("postcss-styl"),
+    // sugarss: () => require("sugarss"),
     /* eslint-enable @mysticatea/node/no-extraneous-require */
 }
 

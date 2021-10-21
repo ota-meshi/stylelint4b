@@ -1,7 +1,8 @@
 "use strict"
 
 const { expect } = require("chai")
-const stylelint4b = require("../../dist/stylelint4b")
+const stylelint4b = require("../..")
+const alias = require("../../alias")
 
 const config = {
     extends: "stylelint-config-standard",
@@ -21,6 +22,12 @@ const config = {
     ],
 }
 describe("stylelint4b", () => {
+    before(() =>
+        alias.defineAliases({
+            "postcss-scss": import("postcss-scss"),
+            "postcss-less": import("postcss-less"),
+        }),
+    )
     it("CSS", () =>
         stylelint4b
             .lint({

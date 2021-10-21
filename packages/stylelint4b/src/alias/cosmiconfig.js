@@ -18,7 +18,9 @@ const stylelintConfigs = {
 function cosmiconfig(_moduleName, { transform }) {
     return {
         async load(filepath) {
-            const config = stylelintConfigs[filepath] || alias.get(filepath)
+            const config =
+                (!alias.has(filepath) && stylelintConfigs[filepath]) ||
+                alias.get(filepath)
             const cosmiconfigResult = {
                 config,
                 filepath,
