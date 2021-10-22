@@ -15,10 +15,6 @@ const UTILS_ROOT = path.resolve(
     __dirname,
     "../../node_modules/stylelint/lib/utils",
 )
-const POSTCSS_SYNTAX_ROOT = path.resolve(
-    __dirname,
-    "../../node_modules/postcss-syntax",
-)
 
 const POSTCSS_LIB_ROOT = path.resolve(
     __dirname,
@@ -28,7 +24,7 @@ const POSTCSS_LIB_ROOT = path.resolve(
 clearDir(path.resolve(__dirname, "../../lib/reference"))
 clearDir(path.resolve(__dirname, "../../lib/rules"))
 clearDir(path.resolve(__dirname, "../../lib/utils"))
-clearDir(path.resolve(__dirname, "../../packages/postcss-syntax"))
+clearDir(path.resolve(__dirname, "../../packages/postcss"))
 
 const targets = [
     {
@@ -39,10 +35,6 @@ const targets = [
         module: "./alias-module",
         name: "alias",
     },
-    // {
-    //     module: "postcss-syntax",
-    //     name: "postcss-syntax",
-    // },
 ]
 
 // eslint-disable-next-line require-jsdoc
@@ -84,16 +76,6 @@ targets.push(
         .map(file => ({
             module: `stylelint/lib/utils/${file}`,
             name: `lib/utils/${file}`,
-        })),
-)
-targets.push(
-    ...fs
-        .readdirSync(POSTCSS_SYNTAX_ROOT)
-        .filter(file => path.extname(file) === ".js")
-        .map(file => path.basename(file, ".js"))
-        .map(file => ({
-            module: `postcss-syntax/${file}`,
-            name: `packages/postcss-syntax/${file}`,
         })),
 )
 targets.push(
@@ -154,7 +136,12 @@ function clearDir(dir) {
         return
     }
     for (const file of fs.readdirSync(dir)) {
-        fs.unlinkSync(path.join(dir, file))
+        const fp = path.join(dir, file)
+        if (fs.statSync(fp).isDirectory()) {
+            clearDir(fp)
+        } else {
+            fs.unlinkSync(fp)
+        }
     }
 }
 

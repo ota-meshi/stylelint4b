@@ -1,0 +1,8 @@
+name: Update Stylelint4b
+description: Update Stylelint4b
+outputs:
+    updated:
+        description: 1 if there is an updates
+runs:
+    using: node12
+    main: index.js

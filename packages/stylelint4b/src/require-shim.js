@@ -3,24 +3,15 @@
 const alias = require("./alias-module")
 const MODULES = {
     /* eslint-disable @mysticatea/node/no-extraneous-require */
-    postcss: require("postcss"),
-    "postcss-safe-parser": require("postcss-safe-parser"),
-    "postcss-scss": require("postcss-scss"),
-    "postcss-less": require("postcss-less"),
-    "postcss-sass": require("postcss-sass"),
-    "postcss-html": require("postcss-html"),
-    "@stylelint/postcss-css-in-js": require("@stylelint/postcss-css-in-js"),
-    "@stylelint/postcss-markdown": require("@stylelint/postcss-markdown"),
+    postcss: () => require("postcss"),
+    "postcss-safe-parser": () => require("postcss-safe-parser"),
+    // "postcss-scss": () => require("postcss-scss"),
+    // "postcss-less": () => require("postcss-less"),
+    // "postcss-sass": () => require("postcss-sass"),
+    // "postcss-html": () => require("postcss-html"),
+    // "postcss-styl": () => require("postcss-styl"),
+    // sugarss: () => require("sugarss"),
     /* eslint-enable @mysticatea/node/no-extraneous-require */
-}
-
-const DIRECT_MODULES = {
-    "postcss/lib/"(moduleId) {
-        return require(`postcss/lib/${moduleId.slice(12)}.js`)
-    },
-    "postcss-html/"(moduleId) {
-        return require(`postcss-html/${moduleId.slice(13)}.js`)
-    },
 }
 
 /**
@@ -34,13 +25,11 @@ function requireFunction(moduleId) {
     if (moduleIdAct.startsWith("./node_modules/")) {
         moduleIdAct = moduleIdAct.slice(15)
     }
-    if (MODULES[moduleIdAct]) {
-        return MODULES[moduleIdAct]
+    if (alias.has(moduleId)) {
+        return alias.get(moduleId)
     }
-    for (const modulePrefix of Object.keys(DIRECT_MODULES)) {
-        if (moduleIdAct.startsWith(modulePrefix)) {
-            return DIRECT_MODULES[modulePrefix](moduleIdAct)
-        }
+    if (MODULES[moduleIdAct]) {
+        return MODULES[moduleIdAct]()
     }
     return alias.get(moduleId)
 }

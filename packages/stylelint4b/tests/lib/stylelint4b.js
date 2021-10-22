@@ -1,12 +1,33 @@
 "use strict"
 
 const { expect } = require("chai")
-const stylelint4b = require("../../dist/stylelint4b")
+const stylelint4b = require("../..")
+const alias = require("../../alias")
 
 const config = {
     extends: "stylelint-config-standard",
+    overrides: [
+        {
+            files: ["*.scss"],
+            customSyntax: "postcss-scss",
+        },
+        {
+            files: ["*.less"],
+            customSyntax: "postcss-less",
+        },
+        {
+            files: ["*.vue"],
+            customSyntax: require("postcss-html")(),
+        },
+    ],
 }
 describe("stylelint4b", () => {
+    before(() =>
+        alias.defineAliases({
+            "postcss-scss": import("postcss-scss"),
+            "postcss-less": import("postcss-less"),
+        }),
+    )
     it("CSS", () =>
         stylelint4b
             .lint({
@@ -28,6 +49,13 @@ describe("stylelint4b", () => {
                         severity: "error",
                         text:
                             "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
+                    },
+                    {
+                        line: 1,
+                        column: 1,
+                        rule: "no-empty-first-line",
+                        severity: "error",
+                        text: "Unexpected empty line (no-empty-first-line)",
                     },
                     {
                         line: 3,
@@ -52,8 +80,7 @@ describe("stylelint4b", () => {
             })
             .then(resultObject => {
                 expect(resultObject.results[0].warnings).to.deep.equal([])
-                expect(resultObject.output).to.equal(`
-.cl {
+                expect(resultObject.output).to.equal(`.cl {
   color: red;
 }
 `)
@@ -80,6 +107,13 @@ describe("stylelint4b", () => {
                         severity: "error",
                         text:
                             "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
+                    },
+                    {
+                        line: 1,
+                        column: 1,
+                        rule: "no-empty-first-line",
+                        severity: "error",
+                        text: "Unexpected empty line (no-empty-first-line)",
                     },
                     {
                         line: 3,
@@ -111,6 +145,13 @@ describe("stylelint4b", () => {
                         severity: "error",
                         text:
                             "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
+                    },
+                    {
+                        line: 1,
+                        column: 1,
+                        rule: "no-empty-first-line",
+                        severity: "error",
+                        text: "Unexpected empty line (no-empty-first-line)",
                     },
                     {
                         line: 3,
@@ -148,61 +189,6 @@ describe("stylelint4b", () => {
                     },
                     {
                         line: 4,
-                        column: 5,
-                        rule: "indentation",
-                        severity: "error",
-                        text: "Expected indentation of 2 spaces (indentation)",
-                    },
-                ])
-            }))
-
-    it("Sass", () =>
-        stylelint4b
-            .lint({
-                code: `
-.cl
-    color: red;
-`,
-                codeFilename: "a.sass",
-                config,
-            })
-            .then(resultObject => {
-                const actual = resultObject.results[0].warnings
-                expect(actual).to.deep.equal([
-                    {
-                        line: 3,
-                        column: 13,
-                        rule: "block-closing-brace-space-before",
-                        severity: "error",
-                        text:
-                            'Expected single space before "}" of a single-line block (block-closing-brace-space-before)',
-                    },
-                    {
-                        line: 3,
-                        column: 2,
-                        rule: "block-opening-brace-space-after",
-                        severity: "error",
-                        text:
-                            'Expected single space after "{" of a single-line block (block-opening-brace-space-after)',
-                    },
-                    {
-                        line: 2,
-                        column: 4,
-                        rule: "block-opening-brace-space-before",
-                        severity: "error",
-                        text:
-                            'Expected single space before "{" (block-opening-brace-space-before)',
-                    },
-                    {
-                        line: 3,
-                        column: 14,
-                        rule: "declaration-block-trailing-semicolon",
-                        severity: "error",
-                        text:
-                            "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
-                    },
-                    {
-                        line: 3,
                         column: 5,
                         rule: "indentation",
                         severity: "error",

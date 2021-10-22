@@ -17,7 +17,16 @@ module.exports = {
                 "../src/alias/write-file-atomic",
             ),
             globby: require.resolve("../src/alias/globby"),
+            "fast-glob": require.resolve("../src/alias/fast-glob"),
         },
+    },
+    externals: {
+        "postcss-styl": "postcss-styl",
+        "postcss-sass": "postcss-sass",
+        "postcss-scss": "postcss-scss",
+        "postcss-less": "postcss-less",
+        "postcss-html": "postcss-html",
+        sugarss: "sugarss",
     },
     module: {
         rules: [
@@ -31,54 +40,6 @@ module.exports = {
                     search: "require\\(([^\"'].*?)\\)|require\\((.*?[^\"'])\\)",
                     replace: (_, params1, params2) =>
                         `require('require-shim')(${params1 || params2})`,
-                    flags: "g",
-                },
-            },
-            // resolve
-            // ./node_modules/postcss-syntax/...
-            // Critical dependency: the request of a dependency is an expression
-            {
-                test: /node_modules\/postcss-syntax\/(load-syntax|get-syntax|processor)\.js$/u,
-                loader: "string-replace-loader",
-                options: {
-                    search: "require\\(([^\"'].*?)\\)|require\\((.*?[^\"'])\\)",
-                    replace: (_, params1, params2) =>
-                        `require('require-shim')(${params1 || params2})`,
-                    flags: "g",
-                },
-            },
-            // resolve
-            // ./node_modules/@babel/core/lib/config/files/configuration.js 190:25-42
-            // ./node_modules/@babel/core/lib/config/files/plugins.js 165:11-24
-            // Critical dependency: the request of a dependency is an expression
-            {
-                test: /node_modules\/@babel\/core\/lib\/config\/files\/(configuration|plugins)\.js$/u,
-                loader: "string-replace-loader",
-                options: {
-                    search: "require\\(\\s*([^\"'].*[^\"'])\\s*\\)",
-                    replace: (_, params) =>
-                        `require('require-shim')(${params})`,
-                    flags: "g",
-                },
-            },
-            // resolve
-            // ./node_modules/stylelint/lib/syntaxes/index.js 4:42-49
-            // Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
-            {
-                test: /node_modules\/stylelint\/lib\/syntaxes\/index\.js$/u,
-                loader: "string-replace-loader",
-                options: {
-                    search: "require\\('import-lazy'\\)\\(require\\)",
-                    replace: () => "require('require-shim')",
-                    flags: "g",
-                },
-            },
-            {
-                test: /node_modules\/stylelint\/lib\/syntaxes\/index\.js$/u,
-                loader: "string-replace-loader",
-                options: {
-                    search: "importLazy\\((.*)\\)",
-                    replace: (_, params) => `require(${params})`,
                     flags: "g",
                 },
             },
@@ -102,12 +63,10 @@ module.exports = {
     // },
     plugins: [
         ...[
-            "stylelint/lib/requireRule.js",
-            "stylelint/lib/dynamicRequire.js",
             "stylelint/lib/formatters/index.js",
             "stylelint/lib/utils/getModulePath.js",
             "stylelint/lib/utils/FileCache.js",
-            "postcss-syntax/patch-postcss.js",
+            "stylelint/lib/utils/isPathNotFoundError.js",
         ].map(file => {
             const reg = new RegExp(
                 `node_modules/${file}`.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&"),

@@ -9,6 +9,14 @@ module.exports = function(config) {
         },
         webpack: {
             mode: "development",
+            externals: {
+                "postcss-styl": "42",
+                sugarss: "42",
+                "postcss-sass": "42",
+                // "postcss-scss": "postcss-scss",
+                // "postcss-less": "postcss-less",
+                // "postcss-html": "postcss-html",
+            },
         },
         reporters: ["spec"],
         customLaunchers: {

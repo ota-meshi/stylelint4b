@@ -91,7 +91,6 @@ export default {
         options() {
             return {
                 reportNeedlessDisables: true,
-                customSyntax: "stylelint-plugin-stylus/custom-syntax",
             }
         },
         objectConfig() {
@@ -213,6 +212,7 @@ export default {
             ])
 
             await alias.defineAliases({
+                "postcss-scss": import("postcss-scss"),
                 [require.resolve(
                     "stylelint-plugin-stylus/recommended",
                 )]: import("stylelint-plugin-stylus/recommended"),
@@ -223,15 +223,8 @@ export default {
                 [require.resolve("stylelint-plugin-stylus")]: import(
                     "stylelint-plugin-stylus"
                 ),
-                "stylelint-plugin-stylus/custom-syntax": import(
-                    "stylelint-plugin-stylus/custom-syntax"
-                ),
                 "stylelint-scss": import("stylelint-scss"),
-                "stylelint-config-sass-guidelines": import(
-                    "stylelint-config-sass-guidelines"
-                ),
                 "stylelint-order": import("stylelint-order"),
-                "postcss-styl": import("postcss-styl"),
             })
             this.stylelint4b = stylelint4b
             this.alias = alias
