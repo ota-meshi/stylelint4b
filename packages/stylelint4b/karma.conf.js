@@ -11,11 +11,11 @@ module.exports = function(config) {
             mode: "development",
             externals: {
                 "postcss-styl": "42",
-                // "postcss-sass": "postcss-sass",
+                sugarss: "42",
+                "postcss-sass": "42",
                 // "postcss-scss": "postcss-scss",
                 // "postcss-less": "postcss-less",
                 // "postcss-html": "postcss-html",
-                // sugarss: "sugarss",
             },
         },
         reporters: ["spec"],
