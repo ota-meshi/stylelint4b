@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/ota-meshi/stylelint4b#readme",
   "devDependencies": {
+    "@actions/core": "^1.6.0",
     "@mysticatea/eslint-plugin": "^13.0.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",

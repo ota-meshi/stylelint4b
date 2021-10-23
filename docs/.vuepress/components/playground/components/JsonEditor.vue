@@ -262,7 +262,7 @@ export default {
     border-radius: 50%;
     border-color: #3eaf7c;
     border-width: 2px;
-    border-style: none solid none solid;
+    border-style: none solid;
     animation: VueStylelintEditorLoadingIcon 1s linear infinite;
 }
 
@@ -315,6 +315,6 @@ export default {
 
 .json-editor-fade-enter,
 .json-editor-fade-leave-to {
-    opacity: 0;
+    opacity: 0%;
 }
 </style>
