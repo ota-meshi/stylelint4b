@@ -24,10 +24,16 @@ jobs:
     - name: Build
       run: cd ./packages/stylelint4b && npm run build
       if: success() && steps.updateStylelint4b.outputs.updated == 1
-    - name: check can npm-publish && release
+    - name: check can npm-publish
       run: |
         cd ./packages/stylelint4b
-        npx can-npm-publish && npm publish || true
+        npx can-npm-publish
+      if: success() && steps.updateStylelint4b.outputs.updated == 1
+    - name: Release
+      run: |
+        cd ./packages/stylelint4b
+        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+        npm publish
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       if: success() && steps.updateStylelint4b.outputs.updated == 1
