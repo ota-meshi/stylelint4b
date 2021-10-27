@@ -42,6 +42,7 @@ module.exports = {
             globby: require.resolve("../src/alias/globby"),
             "fast-glob": require.resolve("../src/alias/fast-glob"),
             path: require.resolve("../src/alias/path"),
+            module: require.resolve("../src/alias/module"),
         },
     },
     externals: {

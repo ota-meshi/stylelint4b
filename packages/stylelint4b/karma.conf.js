@@ -1,5 +1,7 @@
 "use strict"
 
+const baseConfig = require("./build/webpack.config.base")
+
 module.exports = function(config) {
     config.set({
         frameworks: ["mocha"],
@@ -18,7 +20,9 @@ module.exports = function(config) {
                 // "postcss-html": "postcss-html",
             },
             resolve: {
+                ...baseConfig.resolve,
                 alias: {
+                    ...baseConfig.resolve.alias,
                     // eslint-disable-next-line @mysticatea/node/no-extraneous-require
                     htmlparser2: require.resolve("htmlparser2"),
                 },
