@@ -16,11 +16,6 @@ const UTILS_ROOT = path.resolve(
     "../../node_modules/stylelint/lib/utils",
 )
 
-const POSTCSS_LIB_ROOT = path.resolve(
-    __dirname,
-    "../../node_modules/postcss/lib",
-)
-
 clearDir(path.resolve(__dirname, "../../lib/reference"))
 clearDir(path.resolve(__dirname, "../../lib/rules"))
 clearDir(path.resolve(__dirname, "../../lib/utils"))
@@ -78,14 +73,14 @@ targets.push(
             name: `lib/utils/${file}`,
         })),
 )
+const postcssExports = require("postcss/package.json").exports
 targets.push(
-    ...fs
-        .readdirSync(POSTCSS_LIB_ROOT)
-        .filter(file => path.extname(file) === ".js")
-        .map(file => path.basename(file, ".js"))
-        .map(file => ({
-            module: `postcss/lib/${file}`,
-            name: `packages/postcss/lib/${file}`,
+    ...Object.keys(postcssExports)
+        .filter(key => typeof postcssExports[key] === "string")
+        .filter(key => path.extname(postcssExports[key]) === ".js")
+        .map(key => ({
+            module: path.join("postcss", key),
+            name: path.join("packages/postcss", key),
         })),
     {
         module: "postcss/lib/postcss",
@@ -98,14 +93,13 @@ const indexPath = path.resolve(__dirname, "../../src/index.js")
 writeFileSync(
     indexPath,
     `"use strict"
-/* eslint-disable @mysticatea/node/no-extraneous-require */
+/* eslint @mysticatea/eslint-comments/no-use: 0, @mysticatea/eslint-comments/no-unused-disable: 0, @mysticatea/node/no-extraneous-require: 0 */
 
 module.exports = {
   ${targets
       .map(target => `"${target.name}": require("${target.module}")`)
       .join(",\n")}
-}
-/* eslint-enable @mysticatea/node/no-extraneous-require */`,
+}`,
 )
 
 const formatFiles = [indexPath]

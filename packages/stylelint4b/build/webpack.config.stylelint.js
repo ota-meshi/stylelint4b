@@ -3,7 +3,7 @@
 
 // eslint-disable-next-line no-unused-vars
 const webpack = require("webpack")
-const merge = require("webpack-merge")
+const { merge } = require("webpack-merge")
 const path = require("path")
 const base = require("./webpack.config.base")
 
@@ -26,7 +26,8 @@ module.exports = merge(base, {
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, "../dist"),
-        library: ["[name]"],
-        libraryTarget: "commonjs2",
+        library: {
+            type: "commonjs2",
+        },
     },
 })

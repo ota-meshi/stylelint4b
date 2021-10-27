@@ -2,7 +2,7 @@
 "use strict"
 
 const webpack = require("webpack")
-const merge = require("webpack-merge")
+const { merge } = require("webpack-merge")
 const path = require("path")
 const base = require("./webpack.config.base")
 
@@ -21,8 +21,10 @@ module.exports = merge(base, {
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, "../dist"),
-        library: ["[name]"],
-        libraryTarget: "umd",
+        library: {
+            type: "umd",
+            name: "[name]",
+        },
     },
     plugins: [
         new webpack.optimize.LimitChunkCountPlugin({

@@ -22,11 +22,13 @@ module.exports = {
         filename: "[name].js",
         path: path.resolve(__dirname, "../dist"),
         library: {
-            root: "VueStylelintEditor",
-            amd: "vue-stylelint-editor",
-            commonjs: "vue-stylelint-editor",
+            name: {
+                root: "VueStylelintEditor",
+                amd: "vue-stylelint-editor",
+                commonjs: "vue-stylelint-editor",
+            },
+            type: "umd",
         },
-        libraryTarget: "umd",
     },
     module: {
         rules: [

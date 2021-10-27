@@ -1,5 +1,5 @@
 "use strict"
-/* eslint-disable @mysticatea/node/no-extraneous-require */
+/* eslint @mysticatea/eslint-comments/no-use: 0, @mysticatea/eslint-comments/no-unused-disable: 0, @mysticatea/node/no-extraneous-require: 0 */
 
 module.exports = {
     index: require("stylelint"),
@@ -312,7 +312,6 @@ module.exports = {
     "packages/postcss/lib/container": require("postcss/lib/container"),
     "packages/postcss/lib/css-syntax-error": require("postcss/lib/css-syntax-error"),
     "packages/postcss/lib/declaration": require("postcss/lib/declaration"),
-    "packages/postcss/lib/document": require("postcss/lib/document"),
     "packages/postcss/lib/fromJSON": require("postcss/lib/fromJSON"),
     "packages/postcss/lib/input": require("postcss/lib/input"),
     "packages/postcss/lib/lazy-result": require("postcss/lib/lazy-result"),
@@ -337,4 +336,3 @@ module.exports = {
     "packages/postcss/lib/warning": require("postcss/lib/warning"),
     "packages/postcss/index": require("postcss/lib/postcss"),
 }
-/* eslint-enable @mysticatea/node/no-extraneous-require */

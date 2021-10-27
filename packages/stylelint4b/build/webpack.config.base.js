@@ -2,9 +2,13 @@
 
 const webpack = require("webpack")
 
+const nodeLibAlias = Object.fromEntries(
+    Object.entries(require("node-libs-browser")).filter(([_, v]) => v),
+)
 module.exports = {
     resolve: {
         alias: {
+            ...nodeLibAlias,
             "require-shim": require.resolve("../src/require-shim"),
             // dummy node.js modules
             fs: require.resolve("../src/alias/fs"),
@@ -37,6 +41,7 @@ module.exports = {
             ),
             globby: require.resolve("../src/alias/globby"),
             "fast-glob": require.resolve("../src/alias/fast-glob"),
+            path: require.resolve("../src/alias/path"),
         },
     },
     externals: {
@@ -120,6 +125,15 @@ module.exports = {
                     flags: "g",
                 },
             },
+            {
+                test: /node_modules\/.*\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "process.cwd\\s*\\(\\)",
+                    replace: "''",
+                    flags: "g",
+                },
+            },
         ],
     },
     // optimization: {
@@ -141,6 +155,10 @@ module.exports = {
                 reg,
                 require.resolve(`../src/replacement/${file}`),
             )
+        }),
+        new webpack.DefinePlugin({
+            "process.platform": '"b"',
+            "process.cwd": "(()=>'')",
         }),
         new webpack.ProvidePlugin({
             // $: 'jquery'
