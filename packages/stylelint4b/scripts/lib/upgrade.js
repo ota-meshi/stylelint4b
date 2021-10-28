@@ -27,7 +27,7 @@ module.exports = function() {
     ]
         .flat()
         .reduce((mv, v) => (semver.lt(mv, v) ? v : mv))
-    if (semver.lt(stylelintMaxVersion, stylelint4bVersion)) {
+    if (semver.lte(stylelintMaxVersion, stylelint4bVersion)) {
         return null
     }
 
