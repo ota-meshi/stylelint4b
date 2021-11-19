@@ -10,7 +10,7 @@ module.exports = function() {
         return null
     }
     console.log(`Upgrade stylelint@${version}`)
-    const newVersion = `${semver.coerce(version)}-4b.0`
+    const newVersion = semver.coerce(version)
     console.log(`Update version stylelint4b@${newVersion}`)
 
     execInherit("npm", ["version", newVersion])
