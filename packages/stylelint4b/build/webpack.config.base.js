@@ -12,6 +12,19 @@ module.exports = {
             "import-fresh": require.resolve("../src/alias/import-fresh"),
             browserslist: require.resolve("../src/alias/browserslist"),
             cosmiconfig: require.resolve("../src/alias/cosmiconfig"),
+            // resolve cjs
+            "colord/plugins/names": require.resolve(
+                "../node_modules/colord/plugins/names.js",
+            ),
+            "colord/plugins/hwb": require.resolve(
+                "../node_modules/colord/plugins/hwb.js",
+            ),
+            "colord/plugins/lab": require.resolve(
+                "../node_modules/colord/plugins/lab.js",
+            ),
+            "colord/plugins/lch": require.resolve(
+                "../node_modules/colord/plugins/lch.js",
+            ),
             // ignore modules
             "write-file-atomic": require.resolve(
                 "../src/alias/write-file-atomic",
