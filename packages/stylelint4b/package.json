@@ -46,7 +46,7 @@
     "karma-webpack": "^4.0.2",
     "mocha": "^9.0.0",
     "postcss-html": "^1.0.0-alpha.4",
-    "postcss-less": "^5.0.0",
+    "postcss-less": "^6.0.0",
     "postcss-scss": "^4.0.1",
     "raw-loader": "^4.0.0",
     "semver": "^7.3.2",
