@@ -12,6 +12,9 @@ module.exports = {
             "import-fresh": require.resolve("../src/alias/import-fresh"),
             browserslist: require.resolve("../src/alias/browserslist"),
             cosmiconfig: require.resolve("../src/alias/cosmiconfig"),
+            "css-functions-list$": require.resolve(
+                "../src/alias/css-functions-list",
+            ),
             // resolve cjs
             "colord/plugins/names": require.resolve(
                 "../node_modules/colord/plugins/names.js",
@@ -24,6 +27,9 @@ module.exports = {
             ),
             "colord/plugins/lch": require.resolve(
                 "../node_modules/colord/plugins/lch.js",
+            ),
+            "css-functions-list/index.json": require.resolve(
+                "../node_modules/css-functions-list/cjs/index.json",
             ),
             // ignore modules
             "write-file-atomic": require.resolve(
@@ -66,6 +72,51 @@ module.exports = {
                     search: "require\\(\\s*([^\"'].*[^\"'])\\s*\\)",
                     replace: (_, params) =>
                         `require('require-shim')(${params})`,
+                    flags: "g",
+                },
+            },
+            // resolve
+            // ./node_modules/stylelint/lib/rules/index.js
+            // Critical dependency: the request of a dependency is an expression
+            {
+                test: /node_modules\/stylelint\/lib\/rules\/index\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "_importLazy\\(require\\)",
+                    replace: () => "_importLazy",
+                    flags: "g",
+                },
+            },
+            {
+                test: /node_modules\/stylelint\/lib\/rules\/index\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search:
+                        "importLazy\\(\\s*([\"'][^\"'].*[^\"'][\"']),?\\s*\\)",
+                    replace: (_, params) =>
+                        `importLazy(() => require(${params}))()`,
+                    flags: "g",
+                },
+            },
+
+            // resolve
+            // ./node_modules/stylelint/lib/rules/function-no-unknown/index.js
+            // Critical dependency: the request of a dependency is an expression
+            {
+                test: /node_modules\/stylelint\/lib\/rules\/function-no-unknown\/index\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "JSON.parse\\([^\\n]+\\)",
+                    replace: () => "require('css-functions-list/index.json');",
+                    flags: "g",
+                },
+            },
+            {
+                test: /node_modules\/stylelint\/lib\/rules\/function-no-unknown\/index\.js$/u,
+                loader: "string-replace-loader",
+                options: {
+                    search: "new URL",
+                    replace: () => "( ()=>{/*URL*/} )",
                     flags: "g",
                 },
             },
