@@ -41,28 +41,18 @@ describe("stylelint4b", () => {
             })
             .then(resultObject => {
                 const actual = resultObject.results[0].warnings
-                expect(actual).to.deep.equal([
+                expect(actual.map(normalizeWarning)).to.deep.equal([
                     {
                         line: 3,
-                        column: 14,
                         rule: "declaration-block-trailing-semicolon",
-                        severity: "error",
-                        text:
-                            "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
                     },
                     {
                         line: 1,
-                        column: 1,
                         rule: "no-empty-first-line",
-                        severity: "error",
-                        text: "Unexpected empty line (no-empty-first-line)",
                     },
                     {
                         line: 3,
-                        column: 5,
                         rule: "indentation",
-                        severity: "error",
-                        text: "Expected indentation of 2 spaces (indentation)",
                     },
                 ])
             }))
@@ -99,28 +89,18 @@ describe("stylelint4b", () => {
             })
             .then(resultObject => {
                 const actual = resultObject.results[0].warnings
-                expect(actual).to.deep.equal([
+                expect(actual.map(normalizeWarning)).to.deep.equal([
                     {
                         line: 3,
-                        column: 14,
                         rule: "declaration-block-trailing-semicolon",
-                        severity: "error",
-                        text:
-                            "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
                     },
                     {
                         line: 1,
-                        column: 1,
                         rule: "no-empty-first-line",
-                        severity: "error",
-                        text: "Unexpected empty line (no-empty-first-line)",
                     },
                     {
                         line: 3,
-                        column: 5,
                         rule: "indentation",
-                        severity: "error",
-                        text: "Expected indentation of 2 spaces (indentation)",
                     },
                 ])
             }))
@@ -137,28 +117,18 @@ describe("stylelint4b", () => {
             })
             .then(resultObject => {
                 const actual = resultObject.results[0].warnings
-                expect(actual).to.deep.equal([
+                expect(actual.map(normalizeWarning)).to.deep.equal([
                     {
                         line: 3,
-                        column: 14,
                         rule: "declaration-block-trailing-semicolon",
-                        severity: "error",
-                        text:
-                            "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
                     },
                     {
                         line: 1,
-                        column: 1,
                         rule: "no-empty-first-line",
-                        severity: "error",
-                        text: "Unexpected empty line (no-empty-first-line)",
                     },
                     {
                         line: 3,
-                        column: 5,
                         rule: "indentation",
-                        severity: "error",
-                        text: "Expected indentation of 2 spaces (indentation)",
                     },
                 ])
             }))
@@ -178,22 +148,23 @@ describe("stylelint4b", () => {
             })
             .then(resultObject => {
                 const actual = resultObject.results[0].warnings
-                expect(actual).to.deep.equal([
+                expect(actual.map(normalizeWarning)).to.deep.equal([
                     {
                         line: 4,
-                        column: 14,
                         rule: "declaration-block-trailing-semicolon",
-                        severity: "error",
-                        text:
-                            "Expected a trailing semicolon (declaration-block-trailing-semicolon)",
                     },
                     {
                         line: 4,
-                        column: 5,
                         rule: "indentation",
-                        severity: "error",
-                        text: "Expected indentation of 2 spaces (indentation)",
                     },
                 ])
             }))
 })
+
+/** Normalize */
+function normalizeWarning(w) {
+    return {
+        line: w.line,
+        rule: w.rule,
+    }
+}
