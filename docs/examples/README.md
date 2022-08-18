@@ -1,9 +1,9 @@
 # Examples
 
-## [stylelint-plugin-stylus](https://ota-meshi.github.io/stylelint-plugin-stylus/)
+## [stylelint-stylus](https://stylus.github.io/stylelint-stylus/)
 
-- [Playground](https://ota-meshi.github.io/stylelint-plugin-stylus/playground/) ... [Source Code](https://github.com/ota-meshi/stylelint-plugin-stylus/blob/master/docs/.vuepress/components/playground-block.vue)
-- [Rule Document](https://ota-meshi.github.io/stylelint-plugin-stylus/rules/pythonic.html#always)
+- [Playground](https://stylus.github.io/stylelint-stylus/playground/) ... [Source Code](https://github.com/stylus/stylelint-stylus/blob/main/docs/.vuepress/components/playground.vue)
+- [Rule Document](https://stylus.github.io/stylelint-stylus/rules/pythonic.html#always)
 
 ## Using CDN
 

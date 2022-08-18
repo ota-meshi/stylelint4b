@@ -213,15 +213,15 @@ export default {
 
             await alias.defineAliases({
                 "postcss-scss": import("postcss-scss"),
-                [require.resolve(
-                    "stylelint-plugin-stylus/recommended",
-                )]: import("stylelint-plugin-stylus/recommended"),
-                "stylelint-plugin-stylus/standard": import(
-                    "stylelint-plugin-stylus/standard"
+                [require.resolve("stylelint-stylus/recommended")]: import(
+                    "stylelint-stylus/recommended"
                 ),
-                "stylelint-plugin-stylus": import("stylelint-plugin-stylus"),
-                [require.resolve("stylelint-plugin-stylus")]: import(
-                    "stylelint-plugin-stylus"
+                "stylelint-stylus/standard": import(
+                    "stylelint-stylus/standard"
+                ),
+                "stylelint-stylus": import("stylelint-stylus"),
+                [require.resolve("stylelint-stylus")]: import(
+                    "stylelint-stylus"
                 ),
                 "stylelint-scss": import("stylelint-scss"),
                 "stylelint-order": import("stylelint-order"),

@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ["stylelint-config-standard", "stylelint-plugin-stylus/standard"],
+    extends: ["stylelint-config-standard", "stylelint-stylus/standard"],
     rules: {
         "stylus/indentation": null,
         "selector-class-pattern": null,
