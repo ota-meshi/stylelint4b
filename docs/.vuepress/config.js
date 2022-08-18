@@ -7,6 +7,8 @@ const DEV = process.env.NODE_ENV === "development"
 const webpackAlias = {
     // eslint-disable-next-line @mysticatea/node/no-extraneous-require
     stylus: require.resolve("stylus/lib/stylus"),
+
+    "stylelint/lib/reference/keywordSets": require.resolve("./shim/empty"),
     stylelint: DEV
         ? path.resolve(__dirname, "../../packages/stylelint4b")
         : path.resolve(__dirname, "../../node_modules/stylelint4b"),
@@ -42,10 +44,6 @@ module.exports = {
         ? {
               resolve: {
                   alias: {
-                      stylelint4b: path.resolve(
-                          __dirname,
-                          "../../packages/stylelint4b",
-                      ),
                       "vue-stylelint-editor": path.resolve(
                           __dirname,
                           "../../packages/vue-stylelint-editor",
