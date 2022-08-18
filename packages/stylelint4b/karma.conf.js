@@ -17,6 +17,12 @@ module.exports = function(config) {
                 // "postcss-less": "postcss-less",
                 // "postcss-html": "postcss-html",
             },
+            resolve: {
+                alias: {
+                    // eslint-disable-next-line @mysticatea/node/no-extraneous-require
+                    htmlparser2: require.resolve("htmlparser2"),
+                },
+            },
         },
         reporters: ["spec"],
         customLaunchers: {
