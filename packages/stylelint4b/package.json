@@ -56,6 +56,6 @@
     "stylelint-config-standard": "^29.0.0",
     "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^4.0.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^5.0.0"
   }
 }
