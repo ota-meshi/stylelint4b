@@ -10,7 +10,7 @@ console.log(`NODE_ENV=${process.env.NODE_ENV}`);
 
 console.log("run make-modules script");
 queue = queue.then(async () => {
-  // await require("./build-system/make-modules").make();
+  await require("./build-system/make-modules").make();
   console.log("end make-modules script");
 });
 
