@@ -15,6 +15,7 @@ async function build(input, out, { replaceModules, replaceTexts }) {
     console.log(`build@ ${input}`)
     let code = await bundle(input, { replaceModules, replaceTexts })
     code = transform(code)
+    fs.mkdirSync(path.dirname(out), { recursive: true })
     fs.writeFileSync(out, code, "utf8")
 }
 
