@@ -1,6 +1,6 @@
 "use strict";
 
-const alias = require("../alias-module");
+const alias = require("../../../src/alias-module");
 module.exports = {
   cosmiconfig,
 };

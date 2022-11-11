@@ -20,6 +20,7 @@
     "docs:watch": "vuepress dev --no-cache docs",
     "docs:build": "vuepress build --no-cache docs",
     "docs:update": "npm i -D stylelint4b@latest vue-stylelint-editor@latest",
+    "docs:sample-copy": "npx cpx \"sample/sample.html\" \"docs/\\.vuepress/dist/sample\" -u",
     "docs-deploysetup": "npm run docs:update && npm run docs:build && npm run docs-deploysetup:clean && npm run docs-deploysetup:copy",
     "docs-deploysetup:clean": "rimraf assets",
     "docs-deploysetup:copy": "npx cpx \"docs/\\.vuepress/dist/**\" . -u",
