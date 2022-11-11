@@ -1,5 +1,5 @@
 {
-  "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  "eslint.validate": ["javascript", "javascriptreact", "vue", "json", "jsonc"],
   "eslint.workingDirectories": [
     "./",
     "./packages/stylelint-playground-test/docs/.vuepress",

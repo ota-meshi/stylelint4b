@@ -29,16 +29,15 @@
   "homepage": "https://ota-meshi.github.io/stylelint4b/vue-stylelint-editor/",
   "devDependencies": {
     "chai": "^4.3.7",
-    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "cssnano": "^5.1.14",
     "env-cmd": "^10.1.0",
     "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^7.8.2",
     "url-loader": "^4.1.1",
+    "vue": "^2.7.14",
     "vue-loader": "^15.0.0",
     "vue-template-compiler": "^2.7.14",
-    "vue": "^2.7.14",
     "webpack": "^5.75.0",
     "worker-loader": "^3.0.8"
   },

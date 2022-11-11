@@ -1,3 +1,3 @@
-"use strict"
+"use strict";
 
-module.exports = "$css-functions-list$"
+module.exports = "$css-functions-list$";

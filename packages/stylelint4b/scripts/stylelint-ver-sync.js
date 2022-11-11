@@ -1,3 +1,3 @@
-"use strict"
+"use strict";
 
-require("./lib/stylelint-ver-sync")()
+require("./lib/stylelint-ver-sync")();

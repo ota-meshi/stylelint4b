@@ -1,7 +1,7 @@
-import stylus from "./stylus"
-import scss from "./scss"
+import stylus from "./stylus";
+import scss from "./scss";
 
-let languageSetted = false
+let languageSetted = false;
 
 /**
  * Setup Monarch
@@ -9,12 +9,12 @@ let languageSetted = false
  * @returns {void}
  */
 export function languageSetup(monaco) {
-    if (languageSetted) {
-        return
-    }
-    languageSetted = true
-    stylusLanguageSetup(monaco)
-    scssLanguageSetup(monaco)
+  if (languageSetted) {
+    return;
+  }
+  languageSetted = true;
+  stylusLanguageSetup(monaco);
+  scssLanguageSetup(monaco);
 }
 
 /**
@@ -23,8 +23,8 @@ export function languageSetup(monaco) {
  * @returns {void}
  */
 function stylusLanguageSetup(monaco) {
-    monaco.languages.register({ id: "stylus" })
-    monaco.languages.setMonarchTokensProvider("stylus", stylus)
+  monaco.languages.register({ id: "stylus" });
+  monaco.languages.setMonarchTokensProvider("stylus", stylus);
 }
 
 /**
@@ -33,6 +33,6 @@ function stylusLanguageSetup(monaco) {
  * @returns {void}
  */
 function scssLanguageSetup(monaco) {
-    monaco.languages.register({ id: "scss" })
-    monaco.languages.setMonarchTokensProvider("scss", scss)
+  monaco.languages.register({ id: "scss" });
+  monaco.languages.setMonarchTokensProvider("scss", scss);
 }

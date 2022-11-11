@@ -1,23 +1,21 @@
-"use strict"
-/* eslint-disable class-methods-use-this */
+"use strict";
 
 class FileCache {
-    hasFileChanged() {
-        return false
-    }
+  hasFileChanged() {
+    return false;
+  }
 
-    reconcile() {
-        /* nop */
-    }
+  reconcile() {
+    /* nop */
+  }
 
-    destroy() {
-        /* nop */
-    }
+  destroy() {
+    /* nop */
+  }
 
-    removeEntry() {
-        /* nop */
-    }
+  removeEntry() {
+    /* nop */
+  }
 }
-/* eslint-enable class-methods-use-this */
 
-module.exports = FileCache
+module.exports = FileCache;
