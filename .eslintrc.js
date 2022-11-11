@@ -21,6 +21,7 @@ module.exports = {
     console: false,
     Map: false,
     Proxy: false,
+    Promise: false,
   },
   plugins: [],
   rules: {

@@ -3,11 +3,13 @@
 const path = require("path");
 const { build } = require("./build-system/build");
 
+let queue = Promise.resolve();
+
 // eslint-disable-next-line no-process-env -- log
 console.log(`NODE_ENV=${process.env.NODE_ENV}`);
 
 console.log("run make-modules script");
-require("./build-system/make-modules");
+queue = queue.then(() => require("./build-system/make-modules").make());
 console.log("end make-modules script");
 
 const REPLACEMENT_MODULES = {
@@ -38,12 +40,13 @@ const REPLACEMENT_TEXTS = {
     );
   },
 };
-
-build(
-  require.resolve("../src/stylelint4b.mjs"),
-  path.resolve(__dirname, "../dist/stylelint4b.js"),
-  {
-    replaceModules: REPLACEMENT_MODULES,
-    replaceTexts: REPLACEMENT_TEXTS,
-  }
-);
+queue.then(() => {
+  return build(
+    require.resolve("../src/stylelint4b.mjs"),
+    path.resolve(__dirname, "../dist/stylelint4b.js"),
+    {
+      replaceModules: REPLACEMENT_MODULES,
+      replaceTexts: REPLACEMENT_TEXTS,
+    }
+  );
+});
