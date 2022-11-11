@@ -31,4 +31,12 @@ module.exports = {
         "@mysticatea/vue/html-self-closing": "off",
         "@mysticatea/vue/singleline-html-element-content-newline": "off"
     },
+    overrides: [
+        {
+            files: ['*.mjs'],
+            parserOptions: {
+                sourceType: 'module',
+            },
+        }
+    ]
 }

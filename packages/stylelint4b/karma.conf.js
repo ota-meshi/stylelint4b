@@ -2,10 +2,10 @@
 
 module.exports = function(config) {
     config.set({
-        frameworks: ["mocha"],
+        frameworks: ["mocha", "webpack"],
         files: ["tests/**/*.js"],
         preprocessors: {
-            "**/*.js": ["webpack"],
+            "**/tests/**/*.js": ["webpack"],
         },
         webpack: {
             mode: "development",
@@ -21,6 +21,8 @@ module.exports = function(config) {
                 alias: {
                     // eslint-disable-next-line @mysticatea/node/no-extraneous-require
                     htmlparser2: require.resolve("htmlparser2"),
+                    path: require.resolve("./src/alias/path"),
+                    module: require.resolve("./src/alias/_empty"),
                 },
             },
         },

@@ -16,11 +16,6 @@ const UTILS_ROOT = path.resolve(
     "../../node_modules/stylelint/lib/utils",
 )
 
-const POSTCSS_LIB_ROOT = path.resolve(
-    __dirname,
-    "../../node_modules/postcss/lib",
-)
-
 clearDir(path.resolve(__dirname, "../../lib/reference"))
 clearDir(path.resolve(__dirname, "../../lib/rules"))
 clearDir(path.resolve(__dirname, "../../lib/utils"))
@@ -79,18 +74,10 @@ targets.push(
         })),
 )
 targets.push(
-    ...fs
-        .readdirSync(POSTCSS_LIB_ROOT)
-        .filter(file => path.extname(file) === ".js")
-        .map(file => path.basename(file, ".js"))
-        .map(file => ({
-            module: `postcss/lib/${file}`,
-            name: `packages/postcss/lib/${file}`,
-        })),
-    {
-        module: "postcss/lib/postcss",
-        name: "packages/postcss/index",
-    },
+    ...Object.entries(require("postcss/package.json").exports).map(exp => ({
+        module: path.join("postcss", exp[0]),
+        name: path.join("packages/postcss", exp[0]),
+    })),
 )
 
 const indexPath = path.resolve(__dirname, "../../src/index.js")
@@ -118,7 +105,7 @@ for (const target of targets) {
 
         const bundle = require("${
             level ? "../".repeat(level) : "./"
-        }dist/bundle")
+        }dist/stylelint4b")._bundle
         
         module.exports = bundle["${target.name}"]
         `,
@@ -132,7 +119,7 @@ eslint.CLIEngine.outputFixes(report)
 
 // eslint-disable-next-line require-jsdoc
 function clearDir(dir) {
-    if (!isExist(dir)) {
+    if (!fs.existsSync(dir)) {
         return
     }
     for (const file of fs.readdirSync(dir)) {
@@ -146,23 +133,10 @@ function clearDir(dir) {
 }
 
 // eslint-disable-next-line require-jsdoc
-function isExist(file) {
-    try {
-        fs.statSync(file)
-        return true
-    } catch (err) {
-        if (err.code === "ENOENT") {
-            return false
-        }
-        throw err
-    }
-}
-
-// eslint-disable-next-line require-jsdoc
 function writeFileSync(file, ...args) {
     const parents = []
     let parent = path.dirname(file)
-    while (!isExist(parent)) {
+    while (!fs.existsSync(parent)) {
         parents.push(parent)
         parent = path.dirname(parent)
     }
