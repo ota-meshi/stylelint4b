@@ -35,6 +35,7 @@ jobs:
         export NODE_OPTIONS=--openssl-legacy-provider
         npm run build
         npm run docs:build
+        npm run docs:sample-copy
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Upload artifact
