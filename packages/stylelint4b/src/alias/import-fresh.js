@@ -1,3 +1,3 @@
-"use strict"
+"use strict";
 
-module.exports = require("../require-shim")
+module.exports = require("../require-shim");

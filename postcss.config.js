@@ -1,8 +1,8 @@
-"use strict"
+"use strict";
 
 module.exports = {
-    plugins: {
-        "postcss-preset-env": {},
-        cssnano: {},
-    },
-}
+  plugins: {
+    "postcss-preset-env": {},
+    cssnano: {},
+  },
+};

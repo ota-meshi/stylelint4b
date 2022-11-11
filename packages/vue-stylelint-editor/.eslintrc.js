@@ -1,8 +1,25 @@
-"use strict"
+"use strict";
 
 module.exports = {
- ... require('../../.eslintrc.js'),
- extends: [
-     "plugin:@mysticatea/+modules",
- ],
-}
+  extends: [require.resolve("../../.eslintrc.js")],
+  rules: {},
+  overrides: [
+    {
+      files: ["build/**/*.js"],
+      extends: ["plugin:@ota-meshi/+node"],
+    },
+    {
+      files: ["lib/**/*.js"],
+      parserOptions: {
+        sourceType: "module",
+      },
+    },
+    {
+      files: ["lib/**/*.vue"],
+      extends: ["plugin:@ota-meshi/+vue2", "plugin:@ota-meshi/+prettier"],
+      parserOptions: {
+        sourceType: "module",
+      },
+    },
+  ],
+};
