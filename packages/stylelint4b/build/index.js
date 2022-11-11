@@ -1,46 +1,51 @@
 "use strict"
 
-const webpack = require("webpack")
-const configStylelint = require("./webpack.config.stylelint")
-const config4b = require("./webpack.config.4b")
+const path = require("path")
+const { build } = require("./build-system/build")
 
-console.log("run script")
-require("./script")
-console.log("end script")
+// eslint-disable-next-line no-process-env
+console.log(`NODE_ENV=${process.env.NODE_ENV}`)
 
-/**
- * webpack callback
- * @param {*} err
- * @param {*} stats
- */
-function callback(err, stats) {
-    if (err) {
-        console.error(err.stack || err)
-        if (err.details) {
-            console.error(err.details)
-        }
-        throw err
-    }
+console.log("run make-modules script")
+require("./build-system/make-modules")
+console.log("end make-modules script")
 
-    const info = stats.toJson()
-
-    if (stats.hasErrors()) {
-        for (const e of info.errors) {
-            console.error(e)
-        }
-    }
-
-    if (stats.hasWarnings()) {
-        for (const e of info.warnings) {
-            // eslint-disable-next-line no-console
-            console.warn(e)
-        }
-    }
-    // Done processing
+const REPLACEMENT_MODULES = {
+    [require.resolve("stylelint/lib/utils/FileCache")]: require.resolve(
+        "../src/replacement/stylelint/lib/utils/FileCache",
+    ),
+    [require.resolve("stylelint/lib/utils/getModulePath")]: require.resolve(
+        "../src/replacement/stylelint/lib/utils/getModulePath",
+    ),
+    [require.resolve(
+        "stylelint/lib/utils/isPathNotFoundError",
+    )]: require.resolve(
+        "../src/replacement/stylelint/lib/utils/isPathNotFoundError",
+    ),
+    [require.resolve("stylelint/lib/formatters/index")]: require.resolve(
+        "../src/replacement/stylelint/lib/formatters/index",
+    ),
+}
+const REPLACEMENT_TEXTS = {
+    [require.resolve("stylelint/lib/rules/index")](code) {
+        return code.replace(
+            /importLazy\(\s*(["'][^"'].*[^"']["']),?\s*\)/gu,
+            "require($1)",
+        )
+    },
+    [require.resolve("stylelint/lib/rules/function-no-unknown")](code) {
+        return code.replace(
+            /JSON.parse\([^\n]+\)/u,
+            "require('css-functions-list/index.json')",
+        )
+    },
 }
 
-webpack(configStylelint, (...args) => {
-    callback(...args)
-
-    webpack(config4b, callback)
-})
+build(
+    require.resolve("../src/stylelint4b.mjs"),
+    path.resolve(__dirname, "../dist/stylelint4b.js"),
+    {
+        replaceModules: REPLACEMENT_MODULES,
+        replaceTexts: REPLACEMENT_TEXTS,
+    },
+)

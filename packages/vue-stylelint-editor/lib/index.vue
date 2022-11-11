@@ -311,6 +311,19 @@ export default {
             this.monaco = monaco
             this.loadLanguage = loadLanguage
             languageSetup(monaco)
+            monaco.languages.css.cssDefaults.setDiagnosticsOptions({
+                validate: false,
+            })
+            monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions(
+                {
+                    validate: false,
+                },
+            )
+            monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions(
+                {
+                    validate: false,
+                },
+            )
         })().catch(error => {
             console.error("Failed to load Monaco editor:", error)
             this.monacoLoadingError = error

@@ -1,8 +1,17 @@
+/* globals globalThis */
 "use strict"
 
 const { expect } = require("chai")
 const stylelint4b = require("../..")
 const alias = require("../../alias")
+
+if (typeof process === "undefined") {
+    globalThis.process = {
+        cwd() {
+            return ""
+        },
+    }
+}
 
 const config = {
     extends: "stylelint-config-standard",
