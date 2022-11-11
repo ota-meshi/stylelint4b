@@ -20,8 +20,8 @@ module.exports = function (config) {
       resolve: {
         alias: {
           htmlparser2: require.resolve("htmlparser2"),
-          path: require.resolve("./src/alias/path"),
-          module: require.resolve("./src/alias/_empty"),
+          path: require.resolve("./build/shim/alias/path"),
+          module: require.resolve("./build/shim/alias/_empty"),
         },
       },
     },
