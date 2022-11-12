@@ -59,10 +59,10 @@
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.0",
     "stylelint-stylus": "^0.17.0",
-    "stylelint4b": "^14.0.0",
+    "stylelint4b": "file:./packages/stylelint4b",
     "typescript": "^4.0.0",
     "vue-eslint-parser": "^9.1.0",
-    "vue-stylelint-editor": "^0.6.0",
+    "vue-stylelint-editor": "file:./packages/vue-stylelint-editor",
     "vuepress": "^1.4.0"
   }
 }
