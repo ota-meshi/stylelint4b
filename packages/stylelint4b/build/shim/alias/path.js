@@ -7,4 +7,7 @@ module.exports = {
   isAbsolute() {
     return true;
   },
+  dirname(path, ...args) {
+    return path4b.dirname(String(path), ...args);
+  },
 };
