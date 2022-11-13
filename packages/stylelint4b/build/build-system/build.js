@@ -23,6 +23,7 @@ async function build(input, out, { replaceModules, replaceTexts, alias }) {
 async function bundle(entryPoint, { replaceModules, replaceTexts, alias }) {
   const result = await esbuild.build({
     entryPoints: [entryPoint],
+    target: "es2017",
     format: "iife",
     bundle: true,
     // external: externals,
