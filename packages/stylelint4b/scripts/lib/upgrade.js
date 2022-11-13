@@ -6,11 +6,11 @@ const semver = require("semver");
 const { exec, execInherit } = require("./exec");
 
 module.exports = function () {
-  const stylelint4bVersion = semver.coerce(
-    [JSON.parse(exec("npm", ["view", "stylelint4b", "version", "--json"]))]
-      .flat()
-      .reduce((mv, v) => (semver.lt(mv, v) ? v : mv))
-  );
+  const stylelint4bVersion = [
+    JSON.parse(exec("npm", ["view", "stylelint4b", "version", "--json"])),
+  ]
+    .flat()
+    .reduce((mv, v) => (semver.lt(mv, v) ? v : mv));
 
   const oldDependencies = JSON.parse(
     fs.readFileSync(packageJsonPath, "utf8")
