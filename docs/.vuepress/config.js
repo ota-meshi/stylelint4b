@@ -63,6 +63,20 @@ module.exports = {
       "postcss-sass": "postcssSass",
     },
   },
+  chainWebpack(config) {
+    const jsRule = config.module.rule("js");
+    const original = [...jsRule.exclude.values()];
+    jsRule.exclude
+      .clear()
+      .add((filepath) => {
+        if (/node_modules\/(?:stylelint-order|postcss-sorting)\//u.test(filepath)) {
+          return false;
+        }
+        return original.some((fn) => fn(filepath));
+      })
+      .end()
+      .use("babel-loader");
+  },
   head: [
     // ["link", { rel: "icon", type: "image/png", href: "/logo.png" }]
   ],
