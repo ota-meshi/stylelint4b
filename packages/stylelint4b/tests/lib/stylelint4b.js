@@ -42,7 +42,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.css",
@@ -53,15 +53,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 3,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 1,
-            rule: "no-empty-first-line",
-          },
-          {
-            line: 3,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
@@ -70,7 +62,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.css",
@@ -79,8 +71,9 @@ describe("stylelint4b", () => {
       })
       .then((resultObject) => {
         expect(resultObject.results[0].warnings).to.deep.equal([]);
-        expect(resultObject.output).to.equal(`.cl {
-  color: red;
+        expect(resultObject.output).to.equal(`
+.cl {
+    color: #f00
 }
 `);
       }));
@@ -90,7 +83,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.scss",
@@ -101,15 +94,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 3,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 1,
-            rule: "no-empty-first-line",
-          },
-          {
-            line: 3,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
@@ -118,7 +103,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.less",
@@ -129,15 +114,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 3,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 1,
-            rule: "no-empty-first-line",
-          },
-          {
-            line: 3,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
@@ -148,7 +125,7 @@ describe("stylelint4b", () => {
         code: `
 <style>
 .cl {
-    color: red
+    color: #ff0000
 }
 </style>
 `,
@@ -160,11 +137,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 4,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 4,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
