@@ -53,15 +53,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 3,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 1,
-            rule: "no-empty-first-line",
-          },
-          {
-            line: 3,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
@@ -79,7 +71,8 @@ describe("stylelint4b", () => {
       })
       .then((resultObject) => {
         expect(resultObject.results[0].warnings).to.deep.equal([]);
-        expect(resultObject.output).to.equal(`.cl {
+        expect(resultObject.output).to.equal(`
+.cl {
     color: #f00
 }
 `);
@@ -101,15 +94,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 3,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 1,
-            rule: "no-empty-first-line",
-          },
-          {
-            line: 3,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
@@ -129,15 +114,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 3,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 1,
-            rule: "no-empty-first-line",
-          },
-          {
-            line: 3,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
@@ -160,11 +137,7 @@ describe("stylelint4b", () => {
         expect(actual.map(normalizeWarning)).to.deep.equal([
           {
             line: 4,
-            rule: "declaration-block-trailing-semicolon",
-          },
-          {
-            line: 4,
-            rule: "indentation",
+            rule: "color-hex-length",
           },
         ]);
       }));
