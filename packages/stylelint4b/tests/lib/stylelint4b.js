@@ -42,7 +42,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.css",
@@ -70,7 +70,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.css",
@@ -80,7 +80,7 @@ describe("stylelint4b", () => {
       .then((resultObject) => {
         expect(resultObject.results[0].warnings).to.deep.equal([]);
         expect(resultObject.output).to.equal(`.cl {
-  color: red;
+    color: #f00
 }
 `);
       }));
@@ -90,7 +90,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.scss",
@@ -118,7 +118,7 @@ describe("stylelint4b", () => {
       .lint({
         code: `
 .cl {
-    color: red
+    color: #ff0000
 }
 `,
         codeFilename: "a.less",
@@ -148,7 +148,7 @@ describe("stylelint4b", () => {
         code: `
 <style>
 .cl {
-    color: red
+    color: #ff0000
 }
 </style>
 `,
