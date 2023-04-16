@@ -55,7 +55,7 @@
     "prettier": "^2.7.1",
     "strip-json-comments": "^5.0.0",
     "stylelint": "^15.0.0",
-    "stylelint-config-standard": "^32.0.0",
+    "stylelint-config-standard": "^33.0.0",
     "stylelint-order": "^6.0.0",
     "stylelint-scss": "^4.0.0",
     "stylelint-stylus": "^0.18.0",
