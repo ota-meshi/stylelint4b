@@ -53,7 +53,7 @@
     "semver": "^7.3.8",
     "stylelint": "^15.0.0",
     "stylelint-config-recommended": "^13.0.0",
-    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard": "^34.0.0",
     "webpack": "^5.75.0"
   }
 }
