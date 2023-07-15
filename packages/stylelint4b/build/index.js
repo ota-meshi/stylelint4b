@@ -17,32 +17,32 @@ queue = queue.then(async () => {
 const REPLACEMENT_MODULES = {
   // Replace with stub class.
   [require.resolve("stylelint/lib/utils/FileCache")]: require.resolve(
-    "./shim/replacement/stylelint/lib/utils/FileCache"
+    "./shim/replacement/stylelint/lib/utils/FileCache",
   ),
   // Replace with stub function.
   [require.resolve("stylelint/lib/utils/getModulePath")]: require.resolve(
-    "./shim/replacement/stylelint/lib/utils/getModulePath"
+    "./shim/replacement/stylelint/lib/utils/getModulePath",
   ),
   // Replace with stub function.
   [require.resolve("stylelint/lib/utils/isPathNotFoundError")]: require.resolve(
-    "./shim/replacement/stylelint/lib/utils/isPathNotFoundError"
+    "./shim/replacement/stylelint/lib/utils/isPathNotFoundError",
   ),
   // Replace with stub object.
   [require.resolve("stylelint/lib/formatters/index")]: require.resolve(
-    "./shim/replacement/stylelint/lib/formatters/index"
+    "./shim/replacement/stylelint/lib/formatters/index",
   ),
 };
 const REPLACEMENT_TEXTS = {
   [require.resolve("stylelint/lib/rules/index")](code) {
     return code.replace(
       /importLazy\(\s*(["'][^"'].*[^"']["']),?\s*\)/gu,
-      "require($1)"
+      "require($1)",
     );
   },
   [require.resolve("stylelint/lib/rules/function-no-unknown")](code) {
     return code.replace(
       /JSON.parse\([^\n]+\)/u,
-      "require('css-functions-list/index.json')"
+      "require('css-functions-list/index.json')",
     );
   },
 };
@@ -74,6 +74,6 @@ queue.then(() => {
       replaceModules: REPLACEMENT_MODULES,
       replaceTexts: REPLACEMENT_TEXTS,
       alias: ALIAS,
-    }
+    },
   );
 });

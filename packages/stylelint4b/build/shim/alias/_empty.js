@@ -7,5 +7,5 @@ module.exports = new Proxy(
       console.log(`Access: ${name}`);
       return undefined;
     },
-  }
+  },
 );

@@ -13,7 +13,7 @@ module.exports = function () {
     .reduce((mv, v) => (semver.lt(mv, v) ? v : mv));
 
   const oldDependencies = JSON.parse(
-    fs.readFileSync(packageJsonPath, "utf8")
+    fs.readFileSync(packageJsonPath, "utf8"),
   ).devDependencies;
 
   const stylelintMaxVersion = [
@@ -23,7 +23,7 @@ module.exports = function () {
         `stylelint@${oldDependencies.stylelint}`,
         "version",
         "--json",
-      ])
+      ]),
     ),
   ]
     .flat()

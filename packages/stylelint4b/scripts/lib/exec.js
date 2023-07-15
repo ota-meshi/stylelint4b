@@ -20,7 +20,7 @@ module.exports = {
       }
       if (result.status !== 0) {
         throw new Error(
-          `Failed:\n${result.stdout.toString()}\n${result.stderr.toString()}`
+          `Failed:\n${result.stdout.toString()}\n${result.stderr.toString()}`,
         );
       }
       return result.stdout.toString("utf8");
