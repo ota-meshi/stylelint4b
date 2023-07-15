@@ -5,15 +5,15 @@ const path = require("path");
 const eslint = require("../../../../node_modules/eslint");
 const RULES_ROOT = path.resolve(
   __dirname,
-  "../../node_modules/stylelint/lib/rules"
+  "../../node_modules/stylelint/lib/rules",
 );
 const REFERENCE_ROOT = path.resolve(
   __dirname,
-  "../../node_modules/stylelint/lib/reference"
+  "../../node_modules/stylelint/lib/reference",
 );
 const UTILS_ROOT = path.resolve(
   __dirname,
-  "../../node_modules/stylelint/lib/utils"
+  "../../node_modules/stylelint/lib/utils",
 );
 
 module.exports = { make };
@@ -48,7 +48,7 @@ async function make() {
       .map((file) => ({
         module: `stylelint/lib/rules/${file}`,
         name: `lib/rules/${file}`,
-      }))
+      })),
   );
 
   targets.push(
@@ -59,7 +59,7 @@ async function make() {
       .map((file) => ({
         module: `stylelint/lib/reference/${file}`,
         name: `lib/reference/${file}`,
-      }))
+      })),
   );
   targets.push(
     ...fs
@@ -70,18 +70,18 @@ async function make() {
         (file) =>
           file !== "getCacheFile" &&
           file !== "getFileIgnorer" &&
-          file !== "FileCache"
+          file !== "FileCache",
       )
       .map((file) => ({
         module: `stylelint/lib/utils/${file}`,
         name: `lib/utils/${file}`,
-      }))
+      })),
   );
   targets.push(
     ...Object.entries(require("postcss/package.json").exports).map((exp) => ({
       module: path.join("postcss", exp[0]),
       name: path.join("packages/postcss", exp[0]),
-    }))
+    })),
   );
 
   const indexPath = path.resolve(__dirname, "../../src/index.js");
@@ -95,7 +95,7 @@ module.exports = {
     .map((target) => `"${target.name}": require("${target.module}")`)
     .join(",\n")}
 }
-`
+`,
   );
 
   const formatFiles = [indexPath];
@@ -111,7 +111,7 @@ module.exports = {
         }dist/stylelint4b")._bundle
         
         module.exports = bundle["${target.name}"]
-        `
+        `,
     );
     formatFiles.push(libPath);
   }

@@ -35,7 +35,7 @@ describe("stylelint4b", () => {
     alias.defineAliases({
       "postcss-scss": import("postcss-scss"),
       "postcss-less": import("postcss-less"),
-    })
+    }),
   );
   it("CSS", () =>
     stylelint4b

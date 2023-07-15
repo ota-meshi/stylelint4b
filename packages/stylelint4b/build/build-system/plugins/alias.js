@@ -12,7 +12,7 @@ module.exports = (options) => {
   const files = Object.keys(options);
   const filter = new RegExp(
     `(?:${files.map((x) => escapeRegExp(x)).join("|")})`,
-    "u"
+    "u",
   );
 
   /** Resolve path from options */
