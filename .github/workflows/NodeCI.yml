@@ -12,8 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
-      with:
-        node-version: 14
     - name: Install Packages
       run: npm install
     - name: Lint
@@ -23,8 +21,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
-      with:
-        node-version: 14
     - name: Install Packages
       run: npm install
     - name: Build
