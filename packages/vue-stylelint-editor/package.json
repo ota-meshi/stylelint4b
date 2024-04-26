@@ -30,7 +30,7 @@
   "devDependencies": {
     "chai": "^5.0.0",
     "css-loader": "^7.0.0",
-    "cssnano": "^6.0.0",
+    "cssnano": "^7.0.0",
     "env-cmd": "^10.1.0",
     "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^9.0.0",
