@@ -29,7 +29,7 @@
   "homepage": "https://ota-meshi.github.io/stylelint4b/vue-stylelint-editor/",
   "devDependencies": {
     "chai": "^5.0.0",
-    "css-loader": "^6.7.1",
+    "css-loader": "^7.0.0",
     "cssnano": "^6.0.0",
     "env-cmd": "^10.1.0",
     "postcss-loader": "^7.0.1",
