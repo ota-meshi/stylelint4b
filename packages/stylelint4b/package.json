@@ -35,7 +35,7 @@
   },
   "homepage": "https://ota-meshi.github.io/stylelint4b/stylelint4b/",
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^5.0.0",
     "cross-spawn": "^7.0.3",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.20.0",
