@@ -58,7 +58,7 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-order": "^6.0.0",
     "stylelint-scss": "^5.0.0",
-    "stylelint-stylus": "^0.18.0",
+    "stylelint-stylus": "^1.0.0",
     "stylelint4b": "file:./packages/stylelint4b",
     "typescript": "^5.0.0",
     "vue-eslint-parser": "^9.1.0",
