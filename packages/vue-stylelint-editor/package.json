@@ -36,7 +36,7 @@
     "postcss-preset-env": "^10.0.0",
     "url-loader": "^4.1.1",
     "vue": "^2.7.14",
-    "vue-loader": "^15.0.0",
+    "vue-loader": "^17.0.0",
     "vue-template-compiler": "^2.7.14",
     "webpack": "^5.75.0",
     "worker-loader": "^3.0.8"
